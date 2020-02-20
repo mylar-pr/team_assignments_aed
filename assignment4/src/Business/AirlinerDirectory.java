@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class AirlinerDirectory {
     
     private ArrayList<Airliner> airlinerDir;
+
+    public AirlinerDirectory() {
+        airlinerDir = new ArrayList<Airliner>();
+    }
     
 
     public ArrayList<Airliner> getAirlinerDir() {

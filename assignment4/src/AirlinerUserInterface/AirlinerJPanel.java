@@ -62,15 +62,26 @@ public class AirlinerJPanel extends javax.swing.JPanel {
 
     private void createAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlinerBtnActionPerformed
         // TODO add your handling code here:
+        CreateAirliner a = new CreateAirliner(rightPanel, airliner_dir);
+        rightPanel.add("CreateAirliner",a);
+        CardLayout cardLayout = (CardLayout) rightPanel.getLayout();
+        cardLayout.next(rightPanel);
+        
         
         
     }//GEN-LAST:event_createAirlinerBtnActionPerformed
 
     private void manageAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAirlinerBtnActionPerformed
         // TODO add your handling code here:
+        
+        ManageAirlinerJPanel m = new ManageAirlinerJPanel(rightPanel, airliner_dir);
+        rightPanel.add("ManageAirlinersJPanel",m);
+        CardLayout cardLayout = (CardLayout) rightPanel.getLayout(); 
+        cardLayout.next(rightPanel);           
+        
     }//GEN-LAST:event_manageAirlinerBtnActionPerformed
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createAirlinerBtn;
     private javax.swing.JButton manageAirlinerBtn;

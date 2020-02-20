@@ -14,18 +14,21 @@ import javax.swing.JPanel;
  *
  * @author prajw
  */
-public class CreateAirliner extends javax.swing.JPanel {
+public class ViewAirlinerPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateAirliner
+     * Creates new form ViewAirlinerPanel
      */
-    AirlinerDirectory airliner_dir;
     JPanel rightPanel;
+    Airliner airliner;
     
-    public CreateAirliner(JPanel rightPanel, AirlinerDirectory airliner_dir) {
+    public ViewAirlinerPanel(JPanel rightPanel, Airliner airliner) {
         initComponents();
         this.rightPanel = rightPanel;
-        this.airliner_dir = airliner_dir;
+        this.airliner = airliner;
+        
+        populateDetails();
+        
     }
 
     /**
@@ -37,7 +40,6 @@ public class CreateAirliner extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -51,12 +53,9 @@ public class CreateAirliner extends javax.swing.JPanel {
         hqTF = new javax.swing.JTextField();
         allianceDropDown = new javax.swing.JComboBox<>();
         saveAirlinerBtn = new javax.swing.JButton();
+        viewAirlinerUpdateBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Create an Airliner");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         jLabel2.setText("Airliner Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
@@ -102,7 +101,15 @@ public class CreateAirliner extends javax.swing.JPanel {
                 saveAirlinerBtnActionPerformed(evt);
             }
         });
-        add(saveAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
+        add(saveAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
+
+        viewAirlinerUpdateBtn.setText("Update");
+        viewAirlinerUpdateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAirlinerUpdateBtnActionPerformed(evt);
+            }
+        });
+        add(viewAirlinerUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ccnTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccnTFActionPerformed
@@ -112,20 +119,47 @@ public class CreateAirliner extends javax.swing.JPanel {
     private void hqTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hqTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hqTFActionPerformed
-
+    
+    public void populateDetails(){
+        airlinerNameTF.setText(airliner.getAirlinerName());
+        airlinerIdTF.setText(airliner.getAirlinerID());
+        allianceDropDown.setSelectedItem(airliner.getAirlinerName());
+        manufacturerTF.setText(airliner.getManufacturerName());
+        ccnTF.setText(String.valueOf(airliner.getCustomerCareNumber()));
+        hqTF.setText(airliner.getHeadQuarters());
+        
+        airlinerNameTF.setEditable(false);
+        airlinerIdTF.setEditable(false);
+        manufacturerTF.setEditable(false);
+        ccnTF.setEditable(false);
+        hqTF.setEditable(false);
+        
+        allianceDropDown.setEnabled(false);
+        saveAirlinerBtn.setEnabled(false);
+        viewAirlinerUpdateBtn.setEnabled(true);
+        
+                    airliner.setAirlinerName(airlinerNameTF.getText());
+                    airliner.setAirlinerID(airlinerIdTF.getText());
+                    airliner.setAllianceName((String)allianceDropDown.getSelectedItem());
+                    airliner.setManufacturerName(manufacturerTF.getText());
+                    airliner.setCustomerCareNumber(Integer.parseInt(ccnTF.getText()));
+                    airliner.setHeadQuarters(hqTF.getText());
+        
+    
+    }
     private void saveAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAirlinerBtnActionPerformed
         // TODO add your handling code here:
-        
+
         if(airlinerIdTF.getText().equals("") ||
-                airlinerNameTF.getText().equals("") ||
-                allianceDropDown.getSelectedItem().equals("")||
-                manufacturerTF.getText().equals("")||
-                ccnTF.getText().equals("")||
-                hqTF.getText().equals("")){
-        JOptionPane.showMessageDialog(null, "Please enter all the fields.", "Warning", JOptionPane.WARNING_MESSAGE);
-        return;
+            airlinerNameTF.getText().equals("") ||
+            allianceDropDown.getSelectedItem().equals("")||
+            manufacturerTF.getText().equals("")||
+            ccnTF.getText().equals("")||
+            hqTF.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter all the fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        
+
         try{
             Integer.parseInt(airlinerIdTF.getText());
         }
@@ -133,7 +167,7 @@ public class CreateAirliner extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter a valid ID number","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         try{
             Integer.parseInt(ccnTF.getText());
         }
@@ -142,25 +176,40 @@ public class CreateAirliner extends javax.swing.JPanel {
             return;
         }
         
-        Airliner airliner = airliner_dir.addAirliner();
+        
+        airlinerIdTF.setEditable(false);
+        airlinerNameTF.setEditable(false);
+        allianceDropDown.setEnabled(false);
+        manufacturerTF.setEditable(false);
+        ccnTF.setEditable(false);
+        hqTF.setEditable(false);
+        
         airliner.setAirlinerID(airlinerIdTF.getText());
         airliner.setAirlinerName(airlinerNameTF.getText());
         airliner.setAllianceName((String)allianceDropDown.getSelectedItem());
         airliner.setCustomerCareNumber(Integer.parseInt(ccnTF.getText()));
         airliner.setManufacturerName(manufacturerTF.getText());
         airliner.setHeadQuarters(hqTF.getText());
-        
+
         JOptionPane.showMessageDialog(null, "Airliner added successfully.");
         
-        airlinerIdTF.setText("");
-        airlinerNameTF.setText("");
-        manufacturerTF.setText("");
-        hqTF.setText("");
-        ccnTF.setText("");
         
+
         
-        
+
     }//GEN-LAST:event_saveAirlinerBtnActionPerformed
+
+    private void viewAirlinerUpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirlinerUpdateBtnActionPerformed
+        // TODO add your handling code here:
+        airlinerNameTF.setEditable(true);
+        airlinerIdTF.setEditable(true);
+        allianceDropDown.setEnabled(true);
+        manufacturerTF.setEditable(true);
+        ccnTF.setEditable(true);
+        hqTF.setEditable(true);
+        saveAirlinerBtn.setEnabled(true);
+        
+    }//GEN-LAST:event_viewAirlinerUpdateBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -169,7 +218,6 @@ public class CreateAirliner extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> allianceDropDown;
     private javax.swing.JTextField ccnTF;
     private javax.swing.JTextField hqTF;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -178,5 +226,6 @@ public class CreateAirliner extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField manufacturerTF;
     private javax.swing.JButton saveAirlinerBtn;
+    private javax.swing.JButton viewAirlinerUpdateBtn;
     // End of variables declaration//GEN-END:variables
 }
