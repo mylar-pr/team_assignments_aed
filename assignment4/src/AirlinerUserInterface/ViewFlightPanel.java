@@ -6,6 +6,7 @@
 package AirlinerUserInterface;
 
 import Business.Flights;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -23,6 +24,9 @@ public class ViewFlightPanel extends javax.swing.JPanel {
         initComponents();
         this.rightPanel = rightPanel;
         this.flights = flights;
+        saveViewBtn.setEnabled(false);
+        updateViewBtn.setEnabled(true);
+        populateDetails();
     }
 
     /**
@@ -48,11 +52,12 @@ public class ViewFlightPanel extends javax.swing.JPanel {
         flightIDTF = new javax.swing.JTextField();
         flightDateChooser = new com.toedter.calendar.JDateChooser();
         sourceCityTF = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        saveViewBtn = new javax.swing.JButton();
         destCityTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        updateViewBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,8 +107,13 @@ public class ViewFlightPanel extends javax.swing.JPanel {
         add(flightDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 201, -1, -1));
         add(sourceCityTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 140, 134, -1));
 
-        jButton1.setText("Save");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 366, -1, -1));
+        saveViewBtn.setText("Save");
+        saveViewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveViewBtnActionPerformed(evt);
+            }
+        });
+        add(saveViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 70, -1));
 
         destCityTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,8 +130,42 @@ public class ViewFlightPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Flight ID");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 105, -1, -1));
-    }// </editor-fold>//GEN-END:initComponents
 
+        updateViewBtn.setText("Update");
+        updateViewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateViewBtnActionPerformed(evt);
+            }
+        });
+        add(updateViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+    }// </editor-fold>//GEN-END:initComponents
+    
+    public void populateDetails(){
+        flightNameTF.setEditable(false);
+        flightIDTF.setEditable(false);
+        sourceCityTF.setEditable(false);
+        destCityTF.setEditable(false);
+        flightDateChooser.setEnabled(false);
+        flightDurTF.setEditable(false);
+        flightTypeTF.setEditable(false);
+        todCB.setEnabled(false);
+        flightPrice.setEditable(false);
+        
+        
+        flightNameTF.setText(flights.getAirlinerName());
+        flightIDTF.setText(flights.getFlightId());
+        sourceCityTF.setText(flights.getSource());
+        destCityTF.setText(flights.getDestination());
+        flightDateChooser.setDate(flights.getDepartureTime());
+        flightDurTF.setText(Integer.toString(flights.getFlightDuration()));
+        flightTypeTF.setText(flights.getFlightType());
+        todCB.setSelectedItem(flights.getTimeofDay());
+        flightPrice.setText(Integer.toString(flights.getFlightPrice()));
+        
+        
+    }
+    
+    
     private void flightTypeTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightTypeTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_flightTypeTFActionPerformed
@@ -138,6 +182,83 @@ public class ViewFlightPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_destCityTFActionPerformed
 
+    private void saveViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveViewBtnActionPerformed
+        // TODO add your handling code here:
+        if(flightNameTF.getText().equals("") ||
+                flightIDTF.getText().equals("") ||
+                sourceCityTF.getText().equals("") || 
+                destCityTF.getText().equals("")||
+                flightDateChooser.getDate().equals("")||
+                flightDurTF.getText().equals("") ||
+                flightTypeTF.getText().equals("") ||
+                todCB.getSelectedItem().equals("") ||
+                flightPrice.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Please enter all the fields", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try{
+            Integer.parseInt(flightIDTF.getText());
+        }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Enter a valid ID number", "WARNING", JOptionPane.WARNING_MESSAGE);
+                return;
+                }
+        
+        try{
+            Integer.parseInt(flightDurTF.getText());
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Enter valid flight duration", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try{
+            Integer.parseInt(flightPrice.getText());
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Enter a valid price", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
+        flights.setFlightName(flightNameTF.getText());
+        flights.setFlightId(flightIDTF.getText());
+        flights.setSource(sourceCityTF.getText());
+        flights.setDestination(destCityTF.getText());
+        flights.setDepartureTime(flightDateChooser.getDate());
+        flights.setFlightDuration(Integer.parseInt(flightDurTF.getText()));
+        flights.setFlightType(flightTypeTF.getText());
+        flights.setTimeofDay(String.valueOf(todCB.getSelectedItem()));
+        flights.setFlightPrice(Integer.parseInt(flightPrice.getText()));
+        
+        flightNameTF.setEditable(false);
+        flightIDTF.setEditable(false);
+        sourceCityTF.setEditable(false);
+        destCityTF.setEditable(false);
+        flightDateChooser.setEnabled(false);
+        flightDurTF.setEditable(false);
+        flightTypeTF.setEditable(false);
+        todCB.setEnabled(false);
+        flightPrice.setEditable(false);
+        
+        JOptionPane.showMessageDialog(null, "Flight Details Updated.");
+    }//GEN-LAST:event_saveViewBtnActionPerformed
+
+    private void updateViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateViewBtnActionPerformed
+        // TODO add your handling code here:
+        flightNameTF.setEditable(true);
+        flightIDTF.setEditable(true);
+        sourceCityTF.setEditable(true);
+        destCityTF.setEditable(true);
+        flightDateChooser.setEnabled(true);
+        flightDurTF.setEditable(true);
+        flightTypeTF.setEditable(true);
+        todCB.setEnabled(true);
+        flightPrice.setEditable(true);
+        
+        saveViewBtn.setEnabled(true);
+        
+    }//GEN-LAST:event_updateViewBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField destCityTF;
@@ -147,7 +268,6 @@ public class ViewFlightPanel extends javax.swing.JPanel {
     private javax.swing.JTextField flightNameTF;
     private javax.swing.JTextField flightPrice;
     private javax.swing.JTextField flightTypeTF;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -157,7 +277,9 @@ public class ViewFlightPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton saveViewBtn;
     private javax.swing.JTextField sourceCityTF;
     private javax.swing.JComboBox<String> todCB;
+    private javax.swing.JButton updateViewBtn;
     // End of variables declaration//GEN-END:variables
 }

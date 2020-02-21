@@ -143,6 +143,7 @@ public class FleetManagePanel extends javax.swing.JPanel {
     private void removeFlightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFlightBtnActionPerformed
         // TODO add your handling code here:
         int row = fleetManageTbl.getSelectedRow();
+        
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please a flight you want to remove.","WARNING",JOptionPane.WARNING_MESSAGE);
             return;

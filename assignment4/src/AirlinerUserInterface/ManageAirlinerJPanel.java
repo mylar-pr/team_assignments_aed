@@ -120,10 +120,12 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
 
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select an airliner", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+            return;
+        }else{
         Airliner s = (Airliner) airlinerTbl.getValueAt(row, 0);
         airliner_dir.deleteAirliner(s);
         populateAirlinerDetails();
+        }
         
     }//GEN-LAST:event_deleteAirlinerBtnActionPerformed
 
@@ -141,9 +143,9 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
         int rowCount = airlinerTbl.getRowCount();
         DefaultTableModel model = (DefaultTableModel) airlinerTbl.getModel();
         
-        for(int i = rowCount-1; i>=0; i++){
+        for(int i = rowCount-1; i>=0; i--){
             
-            System.out.println("Row count -->"+Integer.toString(rowCount));
+//            System.out.println("Row count -->"+Integer.toString(rowCount));
             model.removeRow(i);
         }
         
