@@ -5,6 +5,8 @@
  */
 package Business;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author prajw
@@ -17,9 +19,30 @@ public class Airliner {
     private String manufacturerName;
     private int customerCareNumber;
     private String headQuarters;
+    private FlightDirectory flights_dir;
+    
+    private ArrayList<Flights> flightScheduleList;
+
+    
+    public FlightDirectory getFlights_dir() {
+        return flights_dir;
+    }
+
+    public void setFlights_dir(FlightDirectory flights_dir) {
+        this.flights_dir = flights_dir;
+    }
+
+    public ArrayList<Flights> getFlightScheduleList() {
+        return flightScheduleList;
+    }
+
+    public void setFlightScheduleList(ArrayList<Flights> flightScheduleList) {
+        this.flightScheduleList = flightScheduleList;
+    }
 
     public Airliner() {
-        
+        flights_dir = new FlightDirectory();
+        flightScheduleList = new ArrayList<Flights>();
         
     }
 

@@ -24,6 +24,7 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
      */
     JPanel rightPanel;
     AirlinerDirectory airliner_dir;
+    Airliner airliner;
     
     public ManageAirlinerJPanel(JPanel rightPanel, AirlinerDirectory airliner_dir) {
         initComponents();
@@ -48,7 +49,7 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
         addAirlinerManageTF = new javax.swing.JButton();
         deleteAirlinerBtn = new javax.swing.JButton();
         viewAirlinerBtn = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        manageFlightsBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -92,8 +93,13 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
         });
         add(viewAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
-        jButton4.setText("Manage Flights");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, 40));
+        manageFlightsBtn.setText("Manage Flights");
+        manageFlightsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageFlightsBtnActionPerformed(evt);
+            }
+        });
+        add(manageFlightsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -170,14 +176,31 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_viewAirlinerBtnActionPerformed
 
+    private void manageFlightsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageFlightsBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedrow = airlinerTbl.getSelectedRow();
+        if(selectedrow<0){
+            JOptionPane.showMessageDialog(null,"Please set the airliner you want to manage.","WARNING",JOptionPane.WARNING_MESSAGE);
+        }else{
+            Airliner airliner = (Airliner) airlinerTbl.getValueAt(selectedrow, 0);
+            FleetManagePanel fleetPanel  = new FleetManagePanel(rightPanel, airliner);
+            rightPanel.add("FlightManagePanel",fleetPanel);
+            CardLayout fleetLayout = (CardLayout)rightPanel.getLayout();
+            fleetLayout.next(rightPanel);
+            
+            
+            
+        }
+    }//GEN-LAST:event_manageFlightsBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addAirlinerManageTF;
     private javax.swing.JTable airlinerTbl;
     private javax.swing.JButton deleteAirlinerBtn;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton manageFlightsBtn;
     private javax.swing.JButton viewAirlinerBtn;
     // End of variables declaration//GEN-END:variables
 }
