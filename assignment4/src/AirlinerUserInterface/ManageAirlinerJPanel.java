@@ -50,6 +50,7 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
         deleteAirlinerBtn = new javax.swing.JButton();
         viewAirlinerBtn = new javax.swing.JButton();
         manageFlightsBtn = new javax.swing.JButton();
+        backManageAirlinersBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -100,6 +101,14 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
             }
         });
         add(manageFlightsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, 40));
+
+        backManageAirlinersBtn.setText("Back");
+        backManageAirlinersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backManageAirlinersBtnActionPerformed(evt);
+            }
+        });
+        add(backManageAirlinersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -149,15 +158,24 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
             model.removeRow(i);
         }
         
-        for(Airliner s: airliner_dir.getAirlinerDir()){
+//        for(Airliner s: airliner_dir.getAirlinerDir()){
+//            Object row[] = new Object[4];
+//            row[0] = s;
+//            row[1] = s.getAirlinerID();
+//            row[2] = s.getAllianceName();
+//            row[3] = s.getCustomerCareNumber();
+//            
+//            model.addRow(row); 
+            
+//        }
+        for (Airliner s : airliner_dir.getAirlinerDir()) {
             Object row[] = new Object[4];
             row[0] = s;
             row[1] = s.getAirlinerID();
             row[2] = s.getAllianceName();
             row[3] = s.getCustomerCareNumber();
             
-            model.addRow(row); 
-            
+            model.addRow(row);
         }
     }
     
@@ -195,10 +213,18 @@ public class ManageAirlinerJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_manageFlightsBtnActionPerformed
 
+    private void backManageAirlinersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backManageAirlinersBtnActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout backManageAirlinerPanel = (CardLayout)rightPanel.getLayout();
+        backManageAirlinerPanel.previous(rightPanel);
+    }//GEN-LAST:event_backManageAirlinersBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addAirlinerManageTF;
     private javax.swing.JTable airlinerTbl;
+    private javax.swing.JButton backManageAirlinersBtn;
     private javax.swing.JButton deleteAirlinerBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

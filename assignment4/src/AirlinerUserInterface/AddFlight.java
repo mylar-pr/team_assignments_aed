@@ -7,6 +7,7 @@ package AirlinerUserInterface;
 
 import Business.Airliner;
 import Business.Flights;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -59,6 +60,7 @@ public class AddFlight extends javax.swing.JPanel {
         flightPrice = new javax.swing.JTextField();
         flightDateChooser = new com.toedter.calendar.JDateChooser();
         saveFlightBtn = new javax.swing.JButton();
+        backAddFlightBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -135,6 +137,14 @@ public class AddFlight extends javax.swing.JPanel {
             }
         });
         add(saveFlightBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 366, -1, -1));
+
+        backAddFlightBtn.setText("Back");
+        backAddFlightBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backAddFlightBtnActionPerformed(evt);
+            }
+        });
+        add(backAddFlightBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void destCityTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destCityTFActionPerformed
@@ -221,8 +231,16 @@ public class AddFlight extends javax.swing.JPanel {
         
     }//GEN-LAST:event_saveFlightBtnActionPerformed
 
+    private void backAddFlightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backAddFlightBtnActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout backAddFlightsLayout = (CardLayout) rightPanel.getLayout();
+        backAddFlightsLayout.next(rightPanel);
+    }//GEN-LAST:event_backAddFlightBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backAddFlightBtn;
     private javax.swing.JTextField destCityTF;
     private com.toedter.calendar.JDateChooser flightDateChooser;
     private javax.swing.JTextField flightDurTF;

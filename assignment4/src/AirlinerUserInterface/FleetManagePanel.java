@@ -56,6 +56,7 @@ public class FleetManagePanel extends javax.swing.JPanel {
         addFlightBtn = new javax.swing.JButton();
         removeFlightBtn = new javax.swing.JButton();
         viewFlightBtn = new javax.swing.JButton();
+        backFleetManageBtn = new javax.swing.JButton();
 
         fleetManageTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +89,13 @@ public class FleetManagePanel extends javax.swing.JPanel {
             }
         });
 
+        backFleetManageBtn.setText("Back");
+        backFleetManageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backFleetManageBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,13 +111,18 @@ public class FleetManagePanel extends javax.swing.JPanel {
                         .addGap(85, 85, 85)
                         .addComponent(removeFlightBtn)
                         .addGap(90, 90, 90)
-                        .addComponent(viewFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(viewFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backFleetManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(27, 27, 27)
+                .addComponent(backFleetManageBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -126,18 +139,27 @@ public class FleetManagePanel extends javax.swing.JPanel {
         for(int i = rowCount-1; i>=0; i--){
             table.removeRow(i);
         }
-        for(Flights f : airliner.getFlights_dir().getFlightDirectory()){
+//        for(Flights f : airliner.getFlights_dir().getFlightDirectory()){
+//            Object row[] = new Object[6];
+//            row[0] = f;
+//            row[1] = f.getFlightId();
+//            row[2] = f.getSource();
+//            row[3] = f.getDestination();
+//            row[4] = f.getFlightDuration();
+//            row[5] = f.getDepartureTime();
+//             
+//            table.addRow(row);
+//        }
+        for (Flights f : airliner.getFlights_dir().getFlightDirectory()) {
             Object row[] = new Object[6];
             row[0] = f;
-            row[1] = f.getFlightId();
+            row[1] = f.getFlightName();
             row[2] = f.getSource();
             row[3] = f.getDestination();
-            row[4] = f.getFlightDuration();
-            row[5] = f.getDepartureTime();
-             
+            row[4] = f.getDepartureTime();
+            row[5] = f.getFlightDuration();
             table.addRow(row);
         }
-    
     }
     
     private void removeFlightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFlightBtnActionPerformed
@@ -184,9 +206,17 @@ public class FleetManagePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_viewFlightBtnActionPerformed
 
+    private void backFleetManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backFleetManageBtnActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout backFleetManagePanel = (CardLayout) rightPanel.getLayout();
+        backFleetManagePanel.previous(rightPanel);
+    }//GEN-LAST:event_backFleetManageBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFlightBtn;
+    private javax.swing.JButton backFleetManageBtn;
     private javax.swing.JTable fleetManageTbl;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton removeFlightBtn;

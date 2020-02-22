@@ -96,6 +96,11 @@ public class Airliner {
         this.headQuarters = headQuarters;
     }
     
+    @Override
+    public String toString() {
+        return airlinerName;
+    }
+    
     
     
 }

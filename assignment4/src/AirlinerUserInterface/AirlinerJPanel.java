@@ -49,7 +49,7 @@ public class AirlinerJPanel extends javax.swing.JPanel {
                 createAirlinerBtnActionPerformed(evt);
             }
         });
-        add(createAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 110, -1));
+        add(createAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 150, 30));
 
         manageAirlinerBtn.setText("Manage Airliner");
         manageAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +57,7 @@ public class AirlinerJPanel extends javax.swing.JPanel {
                 manageAirlinerBtnActionPerformed(evt);
             }
         });
-        add(manageAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 110, -1));
+        add(manageAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 150, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlinerBtnActionPerformed
