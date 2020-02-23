@@ -185,4 +185,30 @@ public class AnalysisHelper {
         return sortedHashMap;
     }
     
+    
+    public void getMostInactiveUsersbyComments() {
+
+        Map<Integer, Integer> commentsCount = new HashMap<>();
+        Map<Integer, Comment> comments = DataStore.getInstance().getComments();
+
+        for (Comment comment : comments.values()) {
+            int totalComments = 0;
+            if (commentsCount.containsKey(comment.getUserId())) {
+                totalComments = commentsCount.get(comment.getUserId());
+            }
+
+            totalComments = totalComments + 1;
+            commentsCount.put(comment.getUserId(), totalComments);
+
+        }
+
+        Map<Integer, Integer> map = sortByValues((HashMap) commentsCount);
+
+        System.out.println("\n5 Most Inactive Users based on number of Comments:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("UserID: " + (map.keySet().toArray()[i]) + " with " + map.get(map.keySet().toArray()[i]) + " comments)");
+        }
+
+    }
+    
 }
