@@ -39,6 +39,7 @@ public class Lab7 {
         System.out.println("Pramod");
         System.out.println("Another line");
         System.out.println("Nitya");
+        System.out.println("Prajwal.");
     }
     
     private void readData() throws IOException{
