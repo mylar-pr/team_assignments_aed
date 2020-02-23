@@ -36,6 +36,10 @@ public class Lab7 {
     public static void main(String[] args) throws IOException {     
         Lab7 inst = new Lab7();
         inst.readData();
+//        System.out.println("Pramod");
+//        System.out.println("Another line");
+//        System.out.println("Nitya");
+//        System.out.println("Prajwal.");
     }
     
     private void readData() throws IOException{
@@ -96,5 +100,18 @@ public class Lab7 {
         helper.userWithMostLikes();
         
         helper.getFiveMostLikedComment();
+        
+        helper.getAverageLikesPerComment();
+        
+        helper.postWithMostComments();
+        
+        helper.getPostWithMostLikedComments();
+        
+        helper.getMostInactiveUsersByPosts();
+        
+        helper.getMostInactiveUsersbyComments();
+        
+        helper.getMostAndLeastActiveUsers();
+        
     }
 }
