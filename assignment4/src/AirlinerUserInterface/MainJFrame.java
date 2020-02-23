@@ -7,6 +7,9 @@ package AirlinerUserInterface;
 
 import Business.Airliner;
 import Business.AirlinerDirectory;
+import Business.BookingDirectory;
+import Business.CustomerDirectory;
+import UserInterface.CustomerUser;
 
 
 import java.awt.CardLayout;
@@ -23,14 +26,16 @@ public class MainJFrame extends javax.swing.JFrame {
  
     private Airliner air;
     private AirlinerDirectory airline_Dir;
-
+    private BookingDirectory booking_dir;
+    private CustomerDirectory customer_dir;
     
     public MainJFrame() {
         initComponents();
         airline_Dir= new AirlinerDirectory();
-
+        booking_dir=new BookingDirectory();
+        customer_dir=new CustomerDirectory();
         setSize(1000,700);
-//        air = new Airliner();
+
                 
     }
 
@@ -134,10 +139,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void customerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerBtnActionPerformed
         // TODO add your handling code here:
-//        CustomerUserOption panel = new CustomerUserOption(rightPanel, customer_dir,"customer", airline_Dir, booking_dir);
-//        rightPanel.add("CustomerUserOption", panel);
-//        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
-//        cardlayout.next(rightPanel);
+        CustomerUser panel = new CustomerUser(rightPanel, customer_dir,"customer", airline_Dir, booking_dir);
+        rightPanel.add("CustomerUserOption", panel);
+        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
+        cardlayout.next(rightPanel);
     }//GEN-LAST:event_customerBtnActionPerformed
 
     /**
