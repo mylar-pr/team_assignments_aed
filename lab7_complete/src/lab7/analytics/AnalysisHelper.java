@@ -254,7 +254,12 @@ public class AnalysisHelper {
             System.out.println("UserID: " + (map.keySet().toArray()[k]) + "'s Score: " + a);
         }
         
-        
+           System.out.println("\n5 most Proactive Users based on sum of comments, posts and likes:");
+        for (int k = map.size() - 1; k >= map.size() - 5; k--) {
+
+            int a = map.get(map.keySet().toArray()[k]) - 1;
+            System.out.println("UserID: " + (map.keySet().toArray()[k]) + "'s Score: " + a);
+        }
         
         
     }    
