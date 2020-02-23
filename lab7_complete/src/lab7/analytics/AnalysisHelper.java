@@ -79,5 +79,35 @@ public class AnalysisHelper {
         System.out.println("\n Average likes per comment =" + avg + "\n");
     }
     
+    public void postWithMostComments(){
+        Map<Integer,Integer> commentCount = new HashMap<>();
+        Map<Integer,Post> posts  = DataStore.getInstance().getPosts();
+        
+        for(Post p : posts.values()){
+            commentCount.put(p.getPostId(),p.getComments().size());
+        }
+        
+        List<Integer> postID = new ArrayList<Integer>();
+        List<Integer> CommentSize = new ArrayList<Integer>();
+        int maxComments = 0;
+        int maxId = 0;
+        
+        for (int id : commentCount.keySet()) {
+            if (commentCount.get(id) > maxComments) {
+                maxComments = commentCount.get(id);
+                maxId = id;
+            }
+            postID.add(id);
+            CommentSize.add(commentCount.get(id));
+        }
+        System.out.println("Most number of comments ---"+CommentSize.get(maxId));
+        for (int i = 0; i < postID.size(); i++) {
+            if (maxComments == CommentSize.get(i)) {
+                System.out.println("\nPost with most comments is PostID:" + postID.get(i) + "\n" + "  Number of comments: " + CommentSize.get(i));
+            }
+        }
+        
+    }
+    
     
 }

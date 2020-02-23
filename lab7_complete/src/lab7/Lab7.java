@@ -103,6 +103,7 @@ public class Lab7 {
         
         helper.getAverageLikesPerComment();
         
+        helper.postWithMostComments();
         
     }
 }
