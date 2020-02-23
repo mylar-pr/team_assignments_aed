@@ -5,6 +5,15 @@
  */
 package CustomerInterface;
 
+import Business.AirlinerDirectory;
+import Business.Booking;
+import Business.BookingDirectory;
+import Business.Customer;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author nitya
@@ -14,8 +23,45 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
     /**
      * Creates new form ViewCustomerBooking
      */
-    public ViewCustomerBooking() {
+    
+    private AirlinerDirectory airlinerDirectory;
+    JPanel RightPanel;
+    BookingDirectory booking_dir;
+    Customer c;
+    Booking b;
+    
+     public ViewCustomerBooking(AirlinerDirectory airlinerDirectory, JPanel RightPanel, Customer c, BookingDirectory booking_dir) {
         initComponents();
+        this.airlinerDirectory = airlinerDirectory;
+        this.RightPanel = RightPanel;
+        this.booking_dir = booking_dir;
+        this.c = c;
+
+        populate_Table();
+
+    }
+     
+     public void populate_Table() {
+        DefaultTableModel TBLmod = (DefaultTableModel) Bookingtable.getModel();
+
+        for (Booking b : booking_dir.getBookingList()) {
+
+            if (c.getEmailID().equalsIgnoreCase(b.getEmailID())) {
+
+                Object row[] = new Object[7];
+                row[0] = b.getFullName();
+                row[1] = b.getAirlinerName();
+                row[2] = b.getFlightID();
+                row[3] = b.getBookedSeats();
+                row[4] = b.getSource();
+                row[5] = b.getDestination();
+                row[6] = b;
+                
+              
+
+                TBLmod.addRow(row);
+            }
+        }
     }
 
     /**
@@ -27,19 +73,89 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Bookingtable = new javax.swing.JTable();
+        Backbtn2 = new javax.swing.JButton();
+        Deletebtn = new javax.swing.JButton();
+
+        Bookingtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer Name", "Airline Name", "Flight ID", "Seats", "Source", "Destination", "Time", "Booking"
+            }
+        ));
+        jScrollPane1.setViewportView(Bookingtable);
+
+        Backbtn2.setText("<<Back");
+        Backbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Backbtn2ActionPerformed(evt);
+            }
+        });
+
+        Deletebtn.setBackground(new java.awt.Color(255, 0, 0));
+        Deletebtn.setText("Delete Booking");
+        Deletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletebtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(Backbtn2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Deletebtn)
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Deletebtn)
+                    .addComponent(Backbtn2))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Backbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Backbtn2ActionPerformed
+        RightPanel.remove(this);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_Backbtn2ActionPerformed
+
+    private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
+        int row = Bookingtable.getSelectedRow();
+
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a Booking to delete.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        Booking book = (Booking) Bookingtable.getValueAt(row, 6);
+        booking_dir.removeBooking(book);
+        populate_Table();
+        JOptionPane.showMessageDialog(null, "Booking Deleted!", "Information", JOptionPane.INFORMATION_MESSAGE);        // TODO add your handling code here:
+    }//GEN-LAST:event_DeletebtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Backbtn;
+    private javax.swing.JButton Backbtn1;
+    private javax.swing.JButton Backbtn2;
+    private javax.swing.JTable Bookingtable;
+    private javax.swing.JButton Deletebtn;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

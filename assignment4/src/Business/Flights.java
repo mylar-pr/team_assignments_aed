@@ -28,6 +28,32 @@ public class Flights {
     private int flightDuration;
     private String AirlinerName;
 
+    public String getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(String flightID) {
+        this.flightID = flightID;
+    }
+
+    public ArrayList<String> getSeatList() {
+        return seatList;
+    }
+
+    public void setSeatList(ArrayList<String> seatList) {
+        this.seatList = seatList;
+    }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+    
+    
+    
     public String getAirlinerName() {
         return AirlinerName;
     }
