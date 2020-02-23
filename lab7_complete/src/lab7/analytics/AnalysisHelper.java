@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lab7.entities.Comment;
+import lab7.entities.Post;
 import lab7.entities.User;
 
 /**
@@ -65,4 +66,18 @@ public class AnalysisHelper {
             System.out.println(commentList.get(i));
         }
     }
+    
+    public void getAverageLikesPerComment(){
+        Map<Integer, Comment> comments = DataStore.getInstance().getComments();
+        List<Comment> commentList = new ArrayList<>(comments.values());
+        int sum = 0;
+        float avg = 0;
+        for (Comment c : commentList) {
+            sum = sum + c.getLikes();
+        }
+        avg = sum / (commentList.size());
+        System.out.println("\n Average likes per comment =" + avg + "\n");
+    }
+    
+    
 }
