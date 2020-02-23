@@ -142,23 +142,23 @@ public class AnalysisHelper {
     }
     public void getMostInactiveUsersByPosts() {
 
-        Map<Integer, Integer> postsCount = new HashMap<>();
+        Map<Integer, Integer> postCount = new HashMap<>();
         Map<Integer, Post> posts = DataStore.getInstance().getPosts();
 
         for (Post post : posts.values()) {
             int totalPosts = 0;
-            if (postsCount.containsKey(post.getUserId())) {
-                totalPosts = postsCount.get(post.getUserId());
+            if (postCount.containsKey(post.getUserId())) {
+                totalPosts = postCount.get(post.getUserId());
             }
 
             totalPosts = totalPosts + 1;
-            postsCount.put(post.getUserId(), totalPosts);
+            postCount.put(post.getUserId(), totalPosts);
 
         }
         
         
 
-        Map<Integer, Integer> map = sortByValues((HashMap) postsCount);
+        Map<Integer, Integer> map = sortByValues((HashMap) postCount);
 //        System.out.println(map);
 
         System.out.println("\n5 Most Inactive Users based on number of Posts");
