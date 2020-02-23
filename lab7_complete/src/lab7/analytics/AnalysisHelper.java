@@ -70,37 +70,106 @@ public class AnalysisHelper {
         }
     }
     
+    public void getAverageLikesPerComment(){
+        Map<Integer, Comment> comments = DataStore.getInstance().getComments();
+        List<Comment> commentList = new ArrayList<>(comments.values());
+        int sum = 0;
+        float avg = 0;
+        for (Comment c : commentList) {
+            sum = sum + c.getLikes();
+        }
+        avg = sum / (commentList.size());
+        System.out.println("\n Average likes per comment =" + avg + "\n");
+    }
     
-    public void FiveMostInactiveUsersbyNoofPosts() {
+    public void postWithMostComments(){
+        Map<Integer,Integer> commentCount = new HashMap<>();
+        Map<Integer,Post> posts  = DataStore.getInstance().getPosts();
+        
+        for(Post p : posts.values()){
+            commentCount.put(p.getPostId(),p.getComments().size());
+        }
+        
+        List<Integer> postID = new ArrayList<Integer>();
+        List<Integer> CommentSize = new ArrayList<Integer>();
+        int maxComments = 0;
+        int maxId = 0;
+        
+        for (int id : commentCount.keySet()) {
+            if (commentCount.get(id) > maxComments) {
+                maxComments = commentCount.get(id);
+                maxId = id;
+            }
+            postID.add(id);
+            CommentSize.add(commentCount.get(id));
+        }
+        System.out.println("Most number of comments ---"+CommentSize.get(maxId));
+        for (int i = 0; i < postID.size(); i++) {
+            if (maxComments == CommentSize.get(i)) {
+                System.out.println("\nPost with most comments is PostID:" + postID.get(i) + "\n" + "  Number of comments: " + CommentSize.get(i));
+            }
+        }
+        
+    }
+    
+    
+    public void getPostWithMostLikedComments(){
+        Map<Integer, Integer> likesCount = new HashMap<>();
+        Map<Integer, Post> posts = DataStore.getInstance().getPosts();
 
-        Map<Integer, Integer> postCount = new HashMap<>();
+        for (Post p : posts.values()) {
+            List<Integer> likes_list = new ArrayList<Integer>();
+            for (Comment c : p.getComments()) {
+                int likes = 0;
+                if (likesCount.containsKey(p.getPostId())) {
+                    likes = likesCount.get(p.getPostId());
+                }
+                likes_list.add(c.getLikes());
+            }
+            likesCount.put(p.getPostId(), Collections.max(likes_list));
+        }
+        int max_value = 0;
+        int maxId = 0;
+//        int idd = 0;
+        for (int id : likesCount.keySet()) {
+            if (likesCount.get(id) > max_value) {
+                max_value = likesCount.get(id);
+                maxId = id;
+//                idd = id;
+            }
+        }
+        System.out.println("Post with most liked Comments : PostID: " + maxId + "\n Likes " + likesCount.get(maxId));
+    }
+    public void getMostInactiveUsersByPosts() {
+
+        Map<Integer, Integer> postsCount = new HashMap<>();
         Map<Integer, Post> posts = DataStore.getInstance().getPosts();
 
         for (Post post : posts.values()) {
             int totalPosts = 0;
-            if (postCount.containsKey(post.getUserId())) {
-                totalPosts = postCount.get(post.getUserId());
+            if (postsCount.containsKey(post.getUserId())) {
+                totalPosts = postsCount.get(post.getUserId());
             }
 
             totalPosts = totalPosts + 1;
-            postCount.put(post.getUserId(), totalPosts);
+            postsCount.put(post.getUserId(), totalPosts);
 
         }
+        
+        
 
-        Map<Integer, Integer> map = sortByValues((HashMap) postCount);
+        Map<Integer, Integer> map = sortByValues((HashMap) postsCount);
 //        System.out.println(map);
 
-        System.out.println("\n5 Most Inactive User based on the number of Posts:");
+        System.out.println("\n5 Most Inactive Users based on number of Posts");
         for (int i = 0; i < 5; i++) {
-            System.out.println("UserID: " + (map.keySet().toArray()[i]) + " with " + map.get(map.keySet().toArray()[i]) + "posts");
+            System.out.println("UserID: " + (map.keySet().toArray()[i]) + " with " + map.get(map.keySet().toArray()[i]) + " post(s)");
         }
 
     }
-    
-    
-       private static HashMap sortByValues(HashMap map) {
+    private static HashMap sortByValues(HashMap map) {
         List list = new LinkedList(map.entrySet());
-  
+        // Defined Custom Comparator here
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
                 return ((Comparable) ((Map.Entry) (o1)).getValue())
@@ -109,10 +178,11 @@ public class AnalysisHelper {
         });
 
         HashMap sortedHashMap = new LinkedHashMap();
-        for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-            Map.Entry entry = (Map.Entry) iterator.next();
+        for (Iterator Iterator = list.iterator(); Iterator.hasNext();) {
+            Map.Entry entry = (Map.Entry) Iterator.next();
             sortedHashMap.put(entry.getKey(), entry.getValue());
         }
         return sortedHashMap;
     }
+    
 }
