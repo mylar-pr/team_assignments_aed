@@ -36,8 +36,7 @@ public class Lab7 {
     public static void main(String[] args) throws IOException {     
         Lab7 inst = new Lab7();
         inst.readData();
-        System.out.println("Nitya");
-        System.out.println("another line");
+
     }
     
     private void readData() throws IOException{
@@ -98,5 +97,7 @@ public class Lab7 {
         helper.userWithMostLikes();
         
         helper.getFiveMostLikedComment();
+        helper.FiveMostInactiveUsersbyNoofPosts();
+        
     }
 }

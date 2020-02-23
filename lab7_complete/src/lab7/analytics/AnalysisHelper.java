@@ -10,9 +10,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import lab7.entities.Comment;
+import lab7.entities.Post;
 import lab7.entities.User;
 
 /**
@@ -64,5 +68,51 @@ public class AnalysisHelper {
         for (int i = 0; i < commentList.size() && i < 5; i++) {
             System.out.println(commentList.get(i));
         }
+    }
+    
+    
+    public void FiveMostInactiveUsersbyNoofPosts() {
+
+        Map<Integer, Integer> postCount = new HashMap<>();
+        Map<Integer, Post> posts = DataStore.getInstance().getPosts();
+
+        for (Post post : posts.values()) {
+            int totalPosts = 0;
+            if (postCount.containsKey(post.getUserId())) {
+                totalPosts = postCount.get(post.getUserId());
+            }
+
+            totalPosts = totalPosts + 1;
+            postCount.put(post.getUserId(), totalPosts);
+
+        }
+
+        Map<Integer, Integer> map = sortByValues((HashMap) postCount);
+//        System.out.println(map);
+
+        System.out.println("\n5 Most Inactive User based on the number of Posts:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("UserID: " + (map.keySet().toArray()[i]) + " with " + map.get(map.keySet().toArray()[i]) + "posts");
+        }
+
+    }
+    
+    
+       private static HashMap sortByValues(HashMap map) {
+        List list = new LinkedList(map.entrySet());
+  
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                return ((Comparable) ((Map.Entry) (o1)).getValue())
+                        .compareTo(((Map.Entry) (o2)).getValue());
+            }
+        });
+
+        HashMap sortedHashMap = new LinkedHashMap();
+        for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            sortedHashMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedHashMap;
     }
 }
