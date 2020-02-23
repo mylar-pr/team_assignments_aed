@@ -36,6 +36,7 @@ public class Lab7 {
     public static void main(String[] args) throws IOException {     
         Lab7 inst = new Lab7();
         inst.readData();
+        System.out.println("Pramod");
     }
     
     private void readData() throws IOException{
