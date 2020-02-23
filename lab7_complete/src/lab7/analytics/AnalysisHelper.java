@@ -110,4 +110,34 @@ public class AnalysisHelper {
     }
     
     
+    public void getPostWithMostLikedComments(){
+        Map<Integer, Integer> likesCount = new HashMap<>();
+        Map<Integer, Post> posts = DataStore.getInstance().getPosts();
+
+        for (Post p : posts.values()) {
+            List<Integer> likes_list = new ArrayList<Integer>();
+            for (Comment c : p.getComments()) {
+                int likes = 0;
+                if (likesCount.containsKey(p.getPostId())) {
+                    likes = likesCount.get(p.getPostId());
+                }
+                likes_list.add(c.getLikes());
+            }
+            likesCount.put(p.getPostId(), Collections.max(likes_list));
+        }
+        int max_value = 0;
+        int maxId = 0;
+//        int idd = 0;
+        for (int id : likesCount.keySet()) {
+            if (likesCount.get(id) > max_value) {
+                max_value = likesCount.get(id);
+                maxId = id;
+//                idd = id;
+            }
+        }
+        System.out.println("Post with most liked Comments : PostID: " + maxId + "\n Likes " + likesCount.get(maxId));
+    }
+    
+    
+    
 }

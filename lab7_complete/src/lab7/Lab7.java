@@ -105,5 +105,7 @@ public class Lab7 {
         
         helper.postWithMostComments();
         
+        helper.getPostWithMostLikedComments();
+        
     }
 }
