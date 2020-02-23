@@ -230,19 +230,29 @@ public class AnalysisHelper {
                 totalScore += c.getLikes();
                 userScore.put(user.getId(), totalScore);
             }
+            
+            
 
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+         for (Post post : posts.values()) {
+            int totalPosts = 0;
+            if (userScore.containsKey(post.getUserId())) {
+                totalPosts = userScore.get(post.getUserId());
+            }
+
+            totalPosts = totalPosts + 1;
+            userScore.put(post.getUserId(), totalPosts);
+
+        }
+
+        Map<Integer, Integer> map = sortByValues((HashMap) userScore);
+        System.out.println("\n5 Most Inactive Users based on Sum of comments, posts and likes:");
+        for (int k = 0; k < 5; k++) {
+
+            int a = map.get(map.keySet().toArray()[k]) - 1;
+            System.out.println("UserID: " + (map.keySet().toArray()[k]) + "'s Score: " + a);
+        }
         
         
         
