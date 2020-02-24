@@ -6,6 +6,7 @@
 package AirlinerUserInterface;
 
 import Business.Flights;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -58,6 +59,7 @@ public class ViewFlightPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         updateViewBtn = new javax.swing.JButton();
+        backViewFlightBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -138,6 +140,14 @@ public class ViewFlightPanel extends javax.swing.JPanel {
             }
         });
         add(updateViewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+
+        backViewFlightBtn.setText("Back");
+        backViewFlightBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backViewFlightBtnActionPerformed(evt);
+            }
+        });
+        add(backViewFlightBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     
     public void populateDetails(){
@@ -259,8 +269,16 @@ public class ViewFlightPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_updateViewBtnActionPerformed
 
+    private void backViewFlightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backViewFlightBtnActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout backViewFlightPanel = (CardLayout) rightPanel.getLayout();
+        backViewFlightPanel.previous(rightPanel);
+    }//GEN-LAST:event_backViewFlightBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backViewFlightBtn;
     private javax.swing.JTextField destCityTF;
     private com.toedter.calendar.JDateChooser flightDateChooser;
     private javax.swing.JTextField flightDurTF;

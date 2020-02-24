@@ -7,6 +7,7 @@ package AirlinerUserInterface;
 
 import Business.Airliner;
 import Business.AirlinerDirectory;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -51,6 +52,7 @@ public class CreateAirliner extends javax.swing.JPanel {
         hqTF = new javax.swing.JTextField();
         allianceDropDown = new javax.swing.JComboBox<>();
         saveAirlinerBtn = new javax.swing.JButton();
+        backCreateAirliner = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -103,6 +105,14 @@ public class CreateAirliner extends javax.swing.JPanel {
             }
         });
         add(saveAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
+
+        backCreateAirliner.setText("Back");
+        backCreateAirliner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backCreateAirlinerActionPerformed(evt);
+            }
+        });
+        add(backCreateAirliner, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ccnTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccnTFActionPerformed
@@ -162,11 +172,19 @@ public class CreateAirliner extends javax.swing.JPanel {
         
     }//GEN-LAST:event_saveAirlinerBtnActionPerformed
 
+    private void backCreateAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCreateAirlinerActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout backCreateAirlinerPanel = (CardLayout) rightPanel.getLayout();
+        backCreateAirlinerPanel.previous(rightPanel);
+    }//GEN-LAST:event_backCreateAirlinerActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField airlinerIdTF;
     private javax.swing.JTextField airlinerNameTF;
     private javax.swing.JComboBox<String> allianceDropDown;
+    private javax.swing.JButton backCreateAirliner;
     private javax.swing.JTextField ccnTF;
     private javax.swing.JTextField hqTF;
     private javax.swing.JLabel jLabel1;
