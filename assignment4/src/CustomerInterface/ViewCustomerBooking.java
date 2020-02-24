@@ -146,7 +146,7 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
         Booking book = (Booking) Bookingtable.getValueAt(row, 6);
         booking_dir.removeBooking(book);
         populate_Table();
-        JOptionPane.showMessageDialog(null, "Booking Deleted!", "Information", JOptionPane.INFORMATION_MESSAGE);        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Booking Deleted", "Information", JOptionPane.INFORMATION_MESSAGE);        // TODO add your handling code here:
     }//GEN-LAST:event_DeletebtnActionPerformed
 
 
