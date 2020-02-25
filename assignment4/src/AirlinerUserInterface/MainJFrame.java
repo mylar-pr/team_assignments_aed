@@ -7,6 +7,11 @@ package AirlinerUserInterface;
 
 import Business.Airliner;
 import Business.AirlinerDirectory;
+import Business.BookingDirectory;
+import Business.CustomerDirectory;
+import Business.TravelAgencyDirectory;
+import UserInterface.CustomerUser;
+import UserInterface.TravelAgencyUser;
 
 
 import java.awt.CardLayout;
@@ -23,14 +28,18 @@ public class MainJFrame extends javax.swing.JFrame {
  
     private Airliner air;
     private AirlinerDirectory airline_Dir;
-
+    private BookingDirectory booking_dir;
+    private CustomerDirectory customer_dir;
+    private TravelAgencyDirectory travel_dir;
     
     public MainJFrame() {
         initComponents();
         airline_Dir= new AirlinerDirectory();
-
+        booking_dir=new BookingDirectory();
+        customer_dir=new CustomerDirectory();
+        travel_dir = new TravelAgencyDirectory();
         setSize(1000,700);
-//        air = new Airliner();
+
                 
     }
 
@@ -126,18 +135,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void agencyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agencyBtnActionPerformed
         // TODO add your handling code here:
-//        TravelAgencyUserOption panel = new TravelAgencyUserOption(rightPanel, travel_dir,"travelagency", airline_Dir,booking_dir);
-//        rightPanel.add("TravelAgencyUserOption", panel);
+//        TravelAgencyUser panel = new TravelAgencyUser(rightPanel, travel_dir,"travelagency", airline_Dir,booking_dir);
+//        rightPanel.add("TravelAgencyUser", panel);
 //        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
 //        cardlayout.next(rightPanel);
+        TravelAgencyUser panel = new TravelAgencyUser(rightPanel, travel_dir,"travelagency", airline_Dir,booking_dir);
+        rightPanel.add("TravelAgencyUserOption", panel);
+        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
+        cardlayout.next(rightPanel);
     }//GEN-LAST:event_agencyBtnActionPerformed
 
     private void customerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerBtnActionPerformed
         // TODO add your handling code here:
-//        CustomerUserOption panel = new CustomerUserOption(rightPanel, customer_dir,"customer", airline_Dir, booking_dir);
-//        rightPanel.add("CustomerUserOption", panel);
-//        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
-//        cardlayout.next(rightPanel);
+        CustomerUser panel = new CustomerUser(rightPanel, customer_dir,"customer", airline_Dir, booking_dir);
+        rightPanel.add("CustomerUserOption", panel);
+        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
+        cardlayout.next(rightPanel);
     }//GEN-LAST:event_customerBtnActionPerformed
 
     /**
