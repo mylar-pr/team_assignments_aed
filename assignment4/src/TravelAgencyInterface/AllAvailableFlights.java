@@ -103,7 +103,7 @@ public class AllAvailableFlights extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Airliner", "Flight ID", "Source City", "Destination", "Time", "Seats", "Price"
+                "Airliner", "Flight ID", "Time", "Source", "Destination", "Seats", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
