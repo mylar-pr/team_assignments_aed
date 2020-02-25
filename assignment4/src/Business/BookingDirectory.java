@@ -34,7 +34,7 @@ public class BookingDirectory {
 }
     
     
-      public void removeBooking(Booking booking)
+    public void removeBooking(Booking booking)
     {
         bookingList.remove(booking);
     }

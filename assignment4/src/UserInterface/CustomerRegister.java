@@ -43,7 +43,6 @@ public class CustomerRegister extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Backbtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         FirstNametxt = new javax.swing.JTextField();
@@ -52,7 +51,7 @@ public class CustomerRegister extends javax.swing.JPanel {
         CustomerID = new javax.swing.JLabel();
         CustomerIDtxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        Gendercomobobox = new javax.swing.JComboBox<String>();
+        Gendercomobobox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         mailtxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -60,13 +59,6 @@ public class CustomerRegister extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         repasswdtxt = new javax.swing.JTextField();
         Createbtn = new javax.swing.JButton();
-
-        Backbtn.setText("<<Back");
-        Backbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackbtnActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Customer Registration");
@@ -97,7 +89,7 @@ public class CustomerRegister extends javax.swing.JPanel {
 
         jLabel7.setText("Gender:");
 
-        Gendercomobobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "male", "female", "other" }));
+        Gendercomobobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "male", "female", "other" }));
         Gendercomobobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GendercomoboboxActionPerformed(evt);
@@ -157,22 +149,15 @@ public class CustomerRegister extends javax.swing.JPanel {
                     .addComponent(Gendercomobobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(Backbtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 235, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(233, 233, 233))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -227,13 +212,6 @@ public class CustomerRegister extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
-        // TODO add your handling code here:
-        right_Panel.remove(this);
-        CardLayout layout =(CardLayout) right_Panel.getLayout();
-        layout.previous(right_Panel);
-    }//GEN-LAST:event_BackbtnActionPerformed
 
     private void FirstNametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstNametxtActionPerformed
         // TODO add your handling code here:
@@ -355,7 +333,6 @@ public class CustomerRegister extends javax.swing.JPanel {
         } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Backbtn;
     private javax.swing.JButton Createbtn;
     private javax.swing.JLabel CustomerID;
     private javax.swing.JTextField CustomerIDtxt;

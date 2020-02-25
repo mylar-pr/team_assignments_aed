@@ -20,7 +20,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btn_BookTicket">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Book Ticket For Customer"/>
+        <Property name="text" type="java.lang.String" value="Book Customer Ticket"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_BookTicketActionPerformed"/>
@@ -33,7 +33,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_Search">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Search All flights"/>
+        <Property name="text" type="java.lang.String" value="Search for flights"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SearchActionPerformed"/>

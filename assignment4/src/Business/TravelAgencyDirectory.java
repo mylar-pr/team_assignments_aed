@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Mahesh
+ * @author paipr
  */
 public class TravelAgencyDirectory {
  private List<TravelAgency> travelAgencyList;

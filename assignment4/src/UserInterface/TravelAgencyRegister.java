@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Mahesh
+ * @author paipr
  */
 public class TravelAgencyRegister extends javax.swing.JPanel {
 
@@ -41,23 +41,22 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_travel_emailID = new javax.swing.JTextField();
+        txtemailID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtPword = new javax.swing.JTextField();
-        txtRePword = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        txtRePassword = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btnCreate = new javax.swing.JButton();
-        txt_TravelAgencyID = new javax.swing.JTextField();
+        btnRegister = new javax.swing.JButton();
+        txtAgencyID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtTravelAgencyName = new javax.swing.JTextField();
+        txtAgencyName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
 
-        txt_travel_emailID.addActionListener(new java.awt.event.ActionListener() {
+        txtemailID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_travel_emailIDActionPerformed(evt);
+                txtemailIDActionPerformed(evt);
             }
         });
 
@@ -67,24 +66,24 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
 
         jLabel3.setText("Re-enter Password :");
 
-        btnCreate.setText("Create");
-        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setText("Create");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
 
-        txt_TravelAgencyID.addActionListener(new java.awt.event.ActionListener() {
+        txtAgencyID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TravelAgencyIDActionPerformed(evt);
+                txtAgencyIDActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Travel Agency ID");
 
-        txtTravelAgencyName.addActionListener(new java.awt.event.ActionListener() {
+        txtAgencyName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTravelAgencyNameActionPerformed(evt);
+                txtAgencyNameActionPerformed(evt);
             }
         });
 
@@ -92,13 +91,6 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Register Travel Agency ");
-
-        btnBack.setText("< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,16 +118,14 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_travel_emailID, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_TravelAgencyID, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTravelAgencyName, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtemailID, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAgencyID, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAgencyName, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(btnBack)
-                        .addGap(89, 89, 89)
+                        .addGap(228, 228, 228)
                         .addComponent(jLabel6)))
                 .addContainerGap(205, Short.MAX_VALUE))
         );
@@ -143,69 +133,67 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addComponent(jLabel6)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtTravelAgencyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAgencyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_TravelAgencyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAgencyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txt_travel_emailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtemailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(btnCreate)
+                .addComponent(btnRegister)
                 .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_travel_emailIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_travel_emailIDActionPerformed
+    private void txtemailIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_travel_emailIDActionPerformed
+    }//GEN-LAST:event_txtemailIDActionPerformed
 
       private boolean usernamePatternCorrect() {
        Pattern p = Pattern.compile("^[a-zA-Z0-9]+_[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
-       Matcher m = p.matcher(txt_travel_emailID.getText());
+       Matcher m = p.matcher(txtemailID.getText());
        boolean b = m.matches();
        return b;
    }
         private boolean PasswordPatternCorrect() {
       // boolean equalsRule = txtPword.equals(txtRePword);
-    boolean lengthRule = txtPword.getText().length() >= 8 && txtPword.getText().length() <= 50;
+    boolean lengthRule = txtPassword.getText().length() >= 8 && txtPassword.getText().length() <= 50;
 
-    boolean upperRule = !String.valueOf(txtPword.getText()).equals(String.valueOf(txtPword.getText()).toLowerCase());
-    boolean lowerRule = !String.valueOf(txtPword.getText()).equals(String.valueOf(txtPword.getText()).toUpperCase());
-    boolean numeralRule = String.valueOf(txtPword.getText()).matches("(.*)[0-9](.*)");
-    boolean nonAlphaRule = String.valueOf(txtPword.getText()).matches("(.*)[^A-Za-z0-9](.*)");
+    boolean upperRule = !String.valueOf(txtPassword.getText()).equals(String.valueOf(txtPassword.getText()).toLowerCase());
+    boolean lowerRule = !String.valueOf(txtPassword.getText()).equals(String.valueOf(txtPassword.getText()).toUpperCase());
+    boolean numeralRule = String.valueOf(txtPassword.getText()).matches("(.*)[0-9](.*)");
+    boolean nonAlphaRule = String.valueOf(txtPassword.getText()).matches("(.*)[^A-Za-z0-9](.*)");
     if( !upperRule || !lowerRule || !numeralRule || !nonAlphaRule ){
             return true;
     }
             return false;
    }
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        String p1 = txtPword.getText();
-        String p2 = txtRePword.getText();
+        String p1 = txtPassword.getText();
+        String p2 = txtRePassword.getText();
        
-         String Name= txtTravelAgencyName.getText();
+         String Name= txtAgencyName.getText();
         if(Name == null || Name.equals("") ){
             JOptionPane.showMessageDialog(null,"Last Name cant be empty");
             return;
         }
-         String custID = txt_TravelAgencyID.getText();
+         String custID = txtAgencyID.getText();
          if(custID.equals("")){
              JOptionPane.showMessageDialog(null," TravelAgency ID can't be empty");
              return;
@@ -217,7 +205,7 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
           JOptionPane.showMessageDialog(null,"TravelAgency ID cannot be String");
            return;
          }
-          String username = txt_travel_emailID.getText();
+          String username = txtemailID.getText();
         if(username == null || username.equals("") ){
           
            
@@ -226,32 +214,32 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
         }
         if(!usernamePatternCorrect()){
             JOptionPane.showConfirmDialog(null,"Email ID should be the form of xxx_xxx@xxx.xxx");
-            txt_travel_emailID.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtemailID.setBorder(BorderFactory.createLineBorder(Color.RED));
            
             return;
         }
         if(PasswordPatternCorrect()){
             JOptionPane.showMessageDialog(null,"Your Password must contain 1 Capital letter , one small Letter, 1 numerical value , one special character and length should be between 8 to 50.");
 
-            txtPword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
            
 
             return;
         }
-        if(!(txtPword.getText().equals(txtRePword.getText()))){
+        if(!(txtPassword.getText().equals(txtRePassword.getText()))){
             JOptionPane.showConfirmDialog(null,"Password and Re entered password does not match");
-            txtPword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
             
-            txtRePword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRePassword.setBorder(BorderFactory.createLineBorder(Color.RED));
            
             return;
         }
 
               TravelAgency ta = travel_dir.addTravelAgency();
-              ta.setTravelAgencyName(txtTravelAgencyName.getText());
-              ta.setTravelAgencyID(txt_travel_emailID.getText());
-              ta.setEmailID(txt_travel_emailID.getText());
-              ta.setPassword(txtPword.getText());
+              ta.setTravelAgencyName(txtAgencyName.getText());
+              ta.setTravelAgencyID(txtemailID.getText());
+              ta.setEmailID(txtemailID.getText());
+              ta.setPassword(txtPassword.getText());
                JOptionPane.showMessageDialog(null,"Travel Agency Registered Successfully");
 //        if(radioSupplier.isSelected()){
 //            admin.getSuppDir().getSupplierList().add(new Supplier(p1,username));
@@ -263,46 +251,38 @@ public class TravelAgencyRegister extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(null,"Customer Registered Successfully");
 //            toMainScreen();
 //        }
-                 txtTravelAgencyName.setText("");
-                 txt_TravelAgencyID.setText("");
-                 txt_travel_emailID.setText("");
-                 txtPword.setText("");
-                 txtRePword.setText("");
+                 txtAgencyName.setText("");
+                 txtAgencyID.setText("");
+                 txtemailID.setText("");
+                 txtPassword.setText("");
+                 txtRePassword.setText("");
               
-                txt_travel_emailID.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-              txtPword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-               txtRePword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    }//GEN-LAST:event_btnCreateActionPerformed
+                txtemailID.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+              txtPassword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+               txtRePassword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void txt_TravelAgencyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TravelAgencyIDActionPerformed
+    private void txtAgencyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgencyIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_TravelAgencyIDActionPerformed
+    }//GEN-LAST:event_txtAgencyIDActionPerformed
 
-    private void txtTravelAgencyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTravelAgencyNameActionPerformed
+    private void txtAgencyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgencyNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTravelAgencyNameActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        right_Panel.remove(this);
-        CardLayout layout =(CardLayout) right_Panel.getLayout();
-        layout.previous(right_Panel);
-    }//GEN-LAST:event_btnBackActionPerformed
+    }//GEN-LAST:event_txtAgencyNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtPword;
-    private javax.swing.JTextField txtRePword;
-    private javax.swing.JTextField txtTravelAgencyName;
-    private javax.swing.JTextField txt_TravelAgencyID;
-    private javax.swing.JTextField txt_travel_emailID;
+    private javax.swing.JTextField txtAgencyID;
+    private javax.swing.JTextField txtAgencyName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtRePassword;
+    private javax.swing.JTextField txtemailID;
     // End of variables declaration//GEN-END:variables
 }

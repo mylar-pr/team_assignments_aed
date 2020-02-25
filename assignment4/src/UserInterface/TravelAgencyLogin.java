@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Mahesh
+ * @author paipr
  */
 public class TravelAgencyLogin extends javax.swing.JPanel {
 
@@ -50,11 +50,10 @@ public class TravelAgencyLogin extends javax.swing.JPanel {
 
         comboUser = new javax.swing.JComboBox<>();
         txtPword = new javax.swing.JTextField();
-        btnSubmit = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
 
         comboUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboUser.addActionListener(new java.awt.event.ActionListener() {
@@ -63,35 +62,26 @@ public class TravelAgencyLogin extends javax.swing.JPanel {
             }
         });
 
-        btnSubmit.setText("Login");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+        btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
+                btnloginActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Travel Agency Login Page");
+        jLabel1.setText("Login");
 
         jLabel2.setText("Email ID");
 
         jLabel3.setText("Password");
-
-        btnBack.setText("< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(101, 101, 101)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
@@ -102,19 +92,17 @@ public class TravelAgencyLogin extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboUser, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSubmit)
+                .addComponent(btnlogin)
                 .addGap(139, 139, 139))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1)
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,7 +112,7 @@ public class TravelAgencyLogin extends javax.swing.JPanel {
                     .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(32, 32, 32)
-                .addComponent(btnSubmit)
+                .addComponent(btnlogin)
                 .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -139,7 +127,7 @@ public class TravelAgencyLogin extends javax.swing.JPanel {
             comboUser.addItem(t); 
         }
     }
-    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
          TravelAgency t =(TravelAgency)comboUser.getSelectedItem();
         if(t!=null){
@@ -151,14 +139,7 @@ public class TravelAgencyLogin extends javax.swing.JPanel {
             
  
         }
-    }//GEN-LAST:event_btnSubmitActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        right_Panel.remove(this);
-        CardLayout layout =(CardLayout) right_Panel.getLayout();
-        layout.previous(right_Panel);
-    }//GEN-LAST:event_btnBackActionPerformed
+    }//GEN-LAST:event_btnloginActionPerformed
    private void grantAccessTo(TravelAgency t){
     TravelAgencyMenu ta = new TravelAgencyMenu(right_Panel,travel_dir,airline_Dir,booking_dir);
     CardLayout layout=(CardLayout) right_Panel.getLayout();
@@ -168,8 +149,7 @@ System.out.print(" travel login succesfully");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnSubmit;
+    private javax.swing.JButton btnlogin;
     private javax.swing.JComboBox<Object> comboUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

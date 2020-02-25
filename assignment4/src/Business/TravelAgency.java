@@ -7,7 +7,7 @@ package Business;
 
 /**
  *
- * @author Mahesh
+ * @author paipr
  */
 public class TravelAgency {
 

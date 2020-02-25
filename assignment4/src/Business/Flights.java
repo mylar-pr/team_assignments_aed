@@ -24,7 +24,7 @@ public class Flights {
     private String TimeofDay;
     private int flightPrice;
     private ArrayList<String> seatList;
-    private int totalSeats;
+    private int totalSeats = 156;
     private int flightDuration;
     private String AirlinerName;
 
@@ -136,9 +136,9 @@ public class Flights {
         this.flightPrice = flightPrice;
     }
 
-    public ArrayList<String> getTotalSeats() {
-        return seatList;
-    }
+//    public ArrayList<String> getSeatList() {
+//        return seatList;
+//    }
 
     public void setTotalSeats(ArrayList<String> totalSeats) {
         this.seatList = totalSeats;

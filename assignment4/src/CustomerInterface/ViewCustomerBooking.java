@@ -75,7 +75,6 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Bookingtable = new javax.swing.JTable();
-        Backbtn2 = new javax.swing.JButton();
         Deletebtn = new javax.swing.JButton();
 
         Bookingtable.setModel(new javax.swing.table.DefaultTableModel(
@@ -87,13 +86,6 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(Bookingtable);
-
-        Backbtn2.setText("<<Back");
-        Backbtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Backbtn2ActionPerformed(evt);
-            }
-        });
 
         Deletebtn.setBackground(new java.awt.Color(255, 0, 0));
         Deletebtn.setText("Delete Booking");
@@ -112,9 +104,7 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(Backbtn2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Deletebtn)
                 .addGap(72, 72, 72))
         );
@@ -124,18 +114,10 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Deletebtn)
-                    .addComponent(Backbtn2))
+                .addComponent(Deletebtn)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Backbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Backbtn2ActionPerformed
-        RightPanel.remove(this);
-        CardLayout layout = (CardLayout) RightPanel.getLayout();
-        layout.next(RightPanel);        // TODO add your handling code here:
-    }//GEN-LAST:event_Backbtn2ActionPerformed
 
     private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
         int row = Bookingtable.getSelectedRow();
@@ -145,15 +127,14 @@ public class ViewCustomerBooking extends javax.swing.JPanel {
         }
         Booking book = (Booking) Bookingtable.getValueAt(row, 6);
         booking_dir.removeBooking(book);
+        
+        JOptionPane.showMessageDialog(null, "Booking Deleted", "Information", JOptionPane.INFORMATION_MESSAGE); 
         populate_Table();
-        JOptionPane.showMessageDialog(null, "Booking Deleted", "Information", JOptionPane.INFORMATION_MESSAGE);        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_DeletebtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Backbtn;
-    private javax.swing.JButton Backbtn1;
-    private javax.swing.JButton Backbtn2;
     private javax.swing.JTable Bookingtable;
     private javax.swing.JButton Deletebtn;
     private javax.swing.JScrollPane jScrollPane1;

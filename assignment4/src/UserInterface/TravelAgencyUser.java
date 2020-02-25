@@ -15,16 +15,16 @@ import javax.swing.JPanel;
  *
  * @author paipr
  */
-public class TravelAgencyUserOption extends javax.swing.JPanel {
+public class TravelAgencyUser extends javax.swing.JPanel {
 
     /**
-     * Creates new form TravelAgencyUserOption
+     * Creates new form TravelAgencyUser
      */
      JPanel right_Panel;
      TravelAgencyDirectory travel_dir;
      AirlinerDirectory airline_Dir;
      BookingDirectory booking_dir;
-    public TravelAgencyUserOption(JPanel RightPanel,TravelAgencyDirectory travel_dir,String optionvalue,AirlinerDirectory airline_Dir, BookingDirectory booking_dir) {
+    public TravelAgencyUser(JPanel RightPanel,TravelAgencyDirectory travel_dir,String optionvalue,AirlinerDirectory airline_Dir, BookingDirectory booking_dir) {
         initComponents();
         this.right_Panel=RightPanel;
         this.travel_dir = travel_dir;

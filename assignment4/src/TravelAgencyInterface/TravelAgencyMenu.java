@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author abhinavnagaraj
+ * @author paipr
  */
 public class TravelAgencyMenu extends javax.swing.JPanel {
 
@@ -57,7 +57,7 @@ public class TravelAgencyMenu extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_BookTicket.setText("Book Ticket For Customer");
+        btn_BookTicket.setText("Book Customer Ticket");
         btn_BookTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_BookTicketActionPerformed(evt);
@@ -65,7 +65,7 @@ public class TravelAgencyMenu extends javax.swing.JPanel {
         });
         add(btn_BookTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 138, -1, -1));
 
-        btn_Search.setText("Search All flights");
+        btn_Search.setText("Search for flights");
         btn_Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_SearchActionPerformed(evt);
@@ -84,7 +84,7 @@ public class TravelAgencyMenu extends javax.swing.JPanel {
 
     private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
         // TODO add your handling code here:
-        ViewAllAvailableFlights c = new ViewAllAvailableFlights(right_Panel, airlinerDirectory,airliner,booking_dir);
+        AllAvailableFlights c = new AllAvailableFlights(right_Panel, airlinerDirectory,airliner,booking_dir);
         right_Panel.add("ViewAllAvailableFlights", c);
         CardLayout layout = (CardLayout)right_Panel.getLayout();
         layout.next(right_Panel);
@@ -101,7 +101,7 @@ public class TravelAgencyMenu extends javax.swing.JPanel {
 
     private void btn_ViewBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewBookingsActionPerformed
         // TODO add your handling code here:
-        TA_ViewBooking ta_ViewBooking = new TA_ViewBooking(airlinerDirectory, right_Panel,travel_dir,booking_dir);
+        TravelAgencyViewBooking ta_ViewBooking = new TravelAgencyViewBooking(airlinerDirectory, right_Panel,travel_dir,booking_dir);
         right_Panel.add("TravelAgencyTicketBooking",ta_ViewBooking);
         CardLayout layout = (CardLayout)right_Panel.getLayout();
         layout.next(right_Panel);
