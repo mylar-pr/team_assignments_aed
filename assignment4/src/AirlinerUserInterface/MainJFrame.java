@@ -9,9 +9,7 @@ import Business.Airliner;
 import Business.AirlinerDirectory;
 import Business.BookingDirectory;
 import Business.CustomerDirectory;
-import Business.TravelAgencyDirectory;
 import UserInterface.CustomerUser;
-import UserInterface.TravelAgencyUserOption;
 
 
 import java.awt.CardLayout;
@@ -30,14 +28,12 @@ public class MainJFrame extends javax.swing.JFrame {
     private AirlinerDirectory airline_Dir;
     private BookingDirectory booking_dir;
     private CustomerDirectory customer_dir;
-    private TravelAgencyDirectory travel_dir;
     
     public MainJFrame() {
         initComponents();
         airline_Dir= new AirlinerDirectory();
         booking_dir=new BookingDirectory();
         customer_dir=new CustomerDirectory();
-        travel_dir = new TravelAgencyDirectory();
         setSize(1000,700);
 
                 
@@ -139,10 +135,6 @@ public class MainJFrame extends javax.swing.JFrame {
 //        rightPanel.add("TravelAgencyUserOption", panel);
 //        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
 //        cardlayout.next(rightPanel);
-        TravelAgencyUserOption panel = new TravelAgencyUserOption(rightPanel, travel_dir,"travelagency", airline_Dir,booking_dir);
-        rightPanel.add("TravelAgencyUserOption", panel);
-        CardLayout cardlayout = (CardLayout) rightPanel.getLayout();
-        cardlayout.next(rightPanel);
     }//GEN-LAST:event_agencyBtnActionPerformed
 
     private void customerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerBtnActionPerformed

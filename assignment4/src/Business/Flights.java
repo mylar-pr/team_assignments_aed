@@ -136,9 +136,9 @@ public class Flights {
         this.flightPrice = flightPrice;
     }
 
-//    public ArrayList<String> getSeatList() {
-//        return seatList;
-//    }
+    public ArrayList<String> getTotalSeats() {
+        return seatList;
+    }
 
     public void setTotalSeats(ArrayList<String> totalSeats) {
         this.seatList = totalSeats;
