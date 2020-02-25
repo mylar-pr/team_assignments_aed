@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author abhinavnagaraj
+ * @author paipr
  */
 public class TravelAgencyTicketBooking extends javax.swing.JPanel {
 
@@ -75,16 +75,16 @@ public class TravelAgencyTicketBooking extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txt_Source = new javax.swing.JTextField();
+        txtSource = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txt_Destination = new javax.swing.JTextField();
+        txtDestination = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        DateChooser = new com.toedter.calendar.JDateChooser();
+        Date = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        btn_SearchFlights = new javax.swing.JButton();
+        btnSearchFlight = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_SearchFlights = new javax.swing.JTable();
-        btn_BookThisFlight = new javax.swing.JButton();
+        tblFlights = new javax.swing.JTable();
+        btnBookFlight = new javax.swing.JButton();
         comboTime = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,34 +95,34 @@ public class TravelAgencyTicketBooking extends javax.swing.JPanel {
 
         jLabel4.setText("Source:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
-        add(txt_Source, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, -1));
+        add(txtSource, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, -1));
 
         jLabel2.setText("Destination:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
 
-        txt_Destination.addActionListener(new java.awt.event.ActionListener() {
+        txtDestination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_DestinationActionPerformed(evt);
+                txtDestinationActionPerformed(evt);
             }
         });
-        add(txt_Destination, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 180, -1));
+        add(txtDestination, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 180, -1));
 
         jLabel3.setText("Date:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-        add(DateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, -1));
+        add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, -1));
 
         jLabel5.setText("Time of Day:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, -1, -1));
 
-        btn_SearchFlights.setText("Search Flights");
-        btn_SearchFlights.addActionListener(new java.awt.event.ActionListener() {
+        btnSearchFlight.setText("Search Flights");
+        btnSearchFlight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_SearchFlightsActionPerformed(evt);
+                btnSearchFlightActionPerformed(evt);
             }
         });
-        add(btn_SearchFlights, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
+        add(btnSearchFlight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
 
-        tbl_SearchFlights.setModel(new javax.swing.table.DefaultTableModel(
+        tblFlights.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -138,49 +138,49 @@ public class TravelAgencyTicketBooking extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbl_SearchFlights);
+        jScrollPane1.setViewportView(tblFlights);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 680, 180));
 
-        btn_BookThisFlight.setText("Book this flight");
-        btn_BookThisFlight.addActionListener(new java.awt.event.ActionListener() {
+        btnBookFlight.setText("Book this flight");
+        btnBookFlight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_BookThisFlightActionPerformed(evt);
+                btnBookFlightActionPerformed(evt);
             }
         });
-        add(btn_BookThisFlight, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
+        add(btnBookFlight, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
 
         comboTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
         add(comboTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_DestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DestinationActionPerformed
+    private void txtDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_DestinationActionPerformed
+    }//GEN-LAST:event_txtDestinationActionPerformed
 
-    private void btn_SearchFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchFlightsActionPerformed
+    private void btnSearchFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFlightActionPerformed
         // TODO add your handling code here:
         Populate_Table();
-    }//GEN-LAST:event_btn_SearchFlightsActionPerformed
+    }//GEN-LAST:event_btnSearchFlightActionPerformed
 
-    private void btn_BookThisFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BookThisFlightActionPerformed
+    private void btnBookFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookFlightActionPerformed
         // TODO add your handling code here:
 
-        int selectrow = tbl_SearchFlights.getSelectedRow();
+        int selectrow = tblFlights.getSelectedRow();
         if (selectrow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a flight to book");
 
         } else {
 
-            Flights f = (Flights) tbl_SearchFlights.getValueAt(selectrow, 1);
+            Flights f = (Flights) tblFlights.getValueAt(selectrow, 1);
          
-            TA_CustomerSeatBooking tabs = new TA_CustomerSeatBooking(right_Panel, f, airlinerDirectory,booking_dir);
+            TravelAgencyCustomerSeatBooking tabs = new TravelAgencyCustomerSeatBooking(right_Panel, f, airlinerDirectory,booking_dir);
             right_Panel.add("TA_CustomerSeatBooking", tabs);
             CardLayout layout = (CardLayout) right_Panel.getLayout();
             layout.next(right_Panel);
 
         }
-    }//GEN-LAST:event_btn_BookThisFlightActionPerformed
+    }//GEN-LAST:event_btnBookFlightActionPerformed
 
     public void Populate_Table() {
         
@@ -190,14 +190,14 @@ public class TravelAgencyTicketBooking extends javax.swing.JPanel {
 
         for (Flights fs : AllflightsSchedule) {
           
-            if (fs.getSource().equalsIgnoreCase(txt_Source.getText())
-                    && fs.getDestination().equalsIgnoreCase(txt_Destination.getText())
-                    && parser.format(fs.getDepartureTime()).equals(parser.format(DateChooser.getDate()))
+            if (fs.getSource().equalsIgnoreCase(txtSource.getText())
+                    && fs.getDestination().equalsIgnoreCase(txtDestination.getText())
+                    && parser.format(fs.getDepartureTime()).equals(parser.format(Date.getDate()))
                     && fs.getTimeofDay().equalsIgnoreCase((String) comboTime.getSelectedItem())) {
                 FilteredFlights.add(fs);
             }
 
-            DefaultTableModel model = (DefaultTableModel) tbl_SearchFlights.getModel();
+            DefaultTableModel model = (DefaultTableModel) tblFlights.getModel();
             model.setRowCount(0);
             for (Flights f : FilteredFlights) {
                 Object row[] = new Object[5];
@@ -214,9 +214,9 @@ public class TravelAgencyTicketBooking extends javax.swing.JPanel {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser DateChooser;
-    private javax.swing.JButton btn_BookThisFlight;
-    private javax.swing.JButton btn_SearchFlights;
+    private com.toedter.calendar.JDateChooser Date;
+    private javax.swing.JButton btnBookFlight;
+    private javax.swing.JButton btnSearchFlight;
     private javax.swing.JComboBox<String> comboTime;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -224,8 +224,8 @@ public class TravelAgencyTicketBooking extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_SearchFlights;
-    private javax.swing.JTextField txt_Destination;
-    private javax.swing.JTextField txt_Source;
+    private javax.swing.JTable tblFlights;
+    private javax.swing.JTextField txtDestination;
+    private javax.swing.JTextField txtSource;
     // End of variables declaration//GEN-END:variables
 }
