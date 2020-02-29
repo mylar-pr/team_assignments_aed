@@ -40,8 +40,9 @@ public class AirlinerJPanel extends javax.swing.JPanel {
 
         createAirlinerBtn = new javax.swing.JButton();
         manageAirlinerBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         createAirlinerBtn.setText("Create Airliner");
         createAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +50,8 @@ public class AirlinerJPanel extends javax.swing.JPanel {
                 createAirlinerBtnActionPerformed(evt);
             }
         });
-        add(createAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 110, -1));
+        add(createAirlinerBtn);
+        createAirlinerBtn.setBounds(290, 220, 290, 40);
 
         manageAirlinerBtn.setText("Manage Airliner");
         manageAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +59,13 @@ public class AirlinerJPanel extends javax.swing.JPanel {
                 manageAirlinerBtnActionPerformed(evt);
             }
         });
-        add(manageAirlinerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 110, -1));
+        add(manageAirlinerBtn);
+        manageAirlinerBtn.setBounds(290, 280, 290, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirlinerUserInterface/58330.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1);
+        jLabel1.setBounds(-250, -90, 1330, 930);
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlinerBtnActionPerformed
@@ -84,6 +92,7 @@ public class AirlinerJPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createAirlinerBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageAirlinerBtn;
     // End of variables declaration//GEN-END:variables
 }
