@@ -5,10 +5,13 @@
  */
 package Business;
 
+import Business.Civilian.CivilianDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +22,27 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
+    private CivilianDirectory cd;
+    private UserAccountDirectory user_dir;
+
+    public CivilianDirectory getCd() {
+        return cd;
+    }
+
+    public void setCd(CivilianDirectory cd) {
+        this.cd = cd;
+    }
+
+    public UserAccountDirectory getUser_dir() {
+        return user_dir;
+    }
+
+    public void setUser_dir(UserAccountDirectory user_dir) {
+        this.user_dir = user_dir;
+    }
+    
+    
+    
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();

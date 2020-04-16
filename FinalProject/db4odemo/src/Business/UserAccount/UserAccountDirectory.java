@@ -42,6 +42,14 @@ public class UserAccountDirectory {
         return userAccount;
     }
     
+    public UserAccount createUserAccount(String username, String password){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
     public boolean checkIfUsernameIsUnique(String username){
         for (UserAccount ua : userAccountList){
             if (ua.getUsername().equals(username))
