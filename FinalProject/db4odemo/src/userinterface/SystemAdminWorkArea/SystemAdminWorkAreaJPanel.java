@@ -10,6 +10,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -28,12 +29,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    UserAccount account;
     private CivilianDirectory cd;
     private UserAccountDirectory user_dir;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.account = account;
         populateTree();
     }
     
@@ -247,7 +250,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void BtnRegisterCivilianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegisterCivilianActionPerformed
         // TODO add your handling code here:
-        RegisterCivilianJPanel rg = new RegisterCivilianJPanel(userProcessContainer, ecosystem, cd, user_dir);
+        RegisterCivilianJPanel rg = new RegisterCivilianJPanel(userProcessContainer, ecosystem, cd, user_dir, account);
         userProcessContainer.add("RegisterCivilian", rg);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

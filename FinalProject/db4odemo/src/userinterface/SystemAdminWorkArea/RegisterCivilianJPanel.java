@@ -9,6 +9,9 @@ import Business.Civilian.CivilianDirectory;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccountDirectory;
 import Business.Civilian.Civilian;
+import Business.Employee.Employee;
+import Business.Role.CivilianRole;
+import Business.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -22,17 +25,19 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
      * Creates new form RegisterCivilianJPanel
      */
     
-    private JPanel userProcessCOntainer;
+    private JPanel userProcessContainer;
     private EcoSystem system;
-    private CivilianDirectory cd;
+//    private CivilianDirectory cd;
     private UserAccountDirectory user_dir;
+    private UserAccount account;
     
-    public RegisterCivilianJPanel(JPanel userProcessContainer, EcoSystem ecosystem, CivilianDirectory cd, UserAccountDirectory user_dir) {
+    public RegisterCivilianJPanel(JPanel userProcessContainer, EcoSystem ecosystem, CivilianDirectory cd, UserAccountDirectory user_dir, UserAccount account) {
         initComponents();
-        this.userProcessCOntainer = userProcessContainer;
-        this.system = system;
-        this.cd = cd;
-        this.user_dir = user_dir;
+        this.userProcessContainer = userProcessContainer;
+        this.system = ecosystem;
+//        this.cd = cd;
+//        this.user_dir = user_dir;
+        this.account = account; 
     }
 
     /**
@@ -202,19 +207,33 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
         
         
 
-        Civilian c = system.getCd().addCivilian();
-        system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password);
-        c.setFirstName(txtFirstName.getText());
-        c.setLastName(txtLastName.getText());
-        c.setAge(txtAge.getText());
-        c.setSex((String) jComboBox1.getSelectedItem());
-        c.setUsername(txtUserName.getText());
-        c.setPassword(password);
+//        Civilian c = system.getCd().addCivilian();
+//        system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password);
+//        c.setFirstName(txtFirstName.getText());
+//        c.setLastName(txtLastName.getText());
+//        c.setAge(txtAge.getText());
+//        c.setSex((String) jComboBox1.getSelectedItem());
+//        c.setUsername(txtUserName.getText());
+//        c.setPassword(password);
+       
+        
+        
+        
+        
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String age = txtAge.getText();
+        String sex = (String) jComboBox1.getSelectedItem();
+        
+//        Employee employee = system.getEmployeeDirectory().createEmployee(firstName);
+        UserAccount account = system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password);
+        Civilian c = system.getCd().createCustomer(firstName, lastName, age, sex, account);
+        
         System.out.println("Registered Civilian succesfully");
         txtFirstName.setText("");
         txtLastName.setText("");
         txtAge.setText("");
-
+        
 
         txtUserName.setText("");
         jPasswordField1.setText("");

@@ -5,6 +5,8 @@
  */
 package userinterface.CivilianRole;
 
+import Business.Civilian.CivilianDirectory;
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -21,6 +23,8 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private Organization organization;
     private Enterprise enterprise;
+    private CivilianDirectory cd;
+    private EcoSystem system;
     /**
      * Creates new form CivilianWorkAreaJPanel
      */
@@ -31,7 +35,21 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         initComponents();
     }
+    
+     public CivilianWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, CivilianDirectory cd, EcoSystem system) {
 
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.cd = cd;
+        this.account = userAccount;
+        this.system = system;
+
+//        system = dB4OUtil.retrieveSystem();
+//        populateRequestTable();
+//        populateTable();
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Business.Civilian;
+import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 import userinterface.MainJFrame;
@@ -12,32 +13,34 @@ import userinterface.MainJFrame;
  * @author paipr
  */
 public class CivilianDirectory {
-    UserAccountDirectory account;
-    private ArrayList<Civilian> civilianDirectory; 
-    MainJFrame main;
-
-    public CivilianDirectory(){
-      civilianDirectory = new ArrayList<Civilian>();
+   private ArrayList<Civilian> civilianDirectory;
+   MainJFrame main;
+   
+   public CivilianDirectory() {
+        civilianDirectory = new ArrayList<Civilian>();
     }
 
-    public ArrayList<Civilian> getCivilianDirectory() {
+    public ArrayList<Civilian> getCivilianList() {
         return civilianDirectory;
     }
 
-    public void setCivilianDirectory(ArrayList<Civilian> civilianDirectory) {
-        this.civilianDirectory = civilianDirectory;
+    public void setCivilianList(ArrayList<Civilian> customerList) {
+        this.civilianDirectory = customerList;
+    }
+     public CivilianDirectory getCivilianDirectory() {
+        CivilianDirectory cd = main.getDir();
+        return cd;
     }
     
-     public Civilian addCivilian()
-    {
+    public Civilian createCustomer(String firstName, String lastName, String age, String sex, UserAccount userAccount){
         Civilian c = new Civilian();
-        civilianDirectory.add(c);
+        c.setFirstName(firstName);
+        c.setLastName(lastName);
+        c.setAge(age);
+        c.setSex(sex);
+//        c.setUserAccount(userAccount);
+        civilianDirectory.add(c);  
         return c;
-    }
-//     public CivilianDirectory getCivilianDirectory() {
-//        CivilianDirectory cd = main.getDir();
-//        return vd;
-//    }
-    
+    } 
     
 }

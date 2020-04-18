@@ -24,7 +24,14 @@ public class EcoSystem extends Organization{
     private ArrayList<Network> networkList;
     private CivilianDirectory cd;
     private UserAccountDirectory user_dir;
+    
+     private EcoSystem(){
+        super(null);
+        networkList=new ArrayList<Network>();
+        cd = new CivilianDirectory();
 
+    }
+    
     public CivilianDirectory getCd() {
         return cd;
     }
@@ -61,10 +68,7 @@ public class EcoSystem extends Organization{
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-    private EcoSystem(){
-        super(null);
-        networkList=new ArrayList<Network>();
-    }
+   
 
     public ArrayList<Network> getNetworkList() {
         return networkList;

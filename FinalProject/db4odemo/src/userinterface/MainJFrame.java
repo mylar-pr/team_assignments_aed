@@ -4,15 +4,18 @@
  */
 package userinterface;
 
+import Business.Civilian.CivilianDirectory;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.CivilianRole.CivilianWorkAreaJPanel;
 
 /**
  *
@@ -25,11 +28,26 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private CivilianDirectory cd;
+    private UserAccountDirectory user_dir;
 
     public MainJFrame() {
         initComponents();
+        cd = new CivilianDirectory();
+        user_dir = new UserAccountDirectory();
         system = dB4OUtil.retrieveSystem();
+        System.out.println("HERE");
+        if(system.getCd()== null){ // ADD MORE DIRECTORIES HERE!!!!
+         system.setCd(cd);
+//         system.setUser_dir(user_dir);
+//         system.setHsd(hsd);
+//         system.setThsd(thsd);
+         }
         this.setSize(1680, 1050);
+    }
+    
+    public CivilianDirectory getDir() {
+        return cd;
     }
 
     /**
@@ -167,9 +185,19 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         }
         
+        
         if(userAccount==null){
-            JOptionPane.showMessageDialog(null, "Invalid credentials");
-            return;
+            UserAccount civilianUserAccount =  system.getUserAccountDirectory().authenticateUser(userName, password);
+            if (civilianUserAccount != null) {
+                System.out.println("Civilian Login Succesful");
+                CivilianWorkAreaJPanel panel = new CivilianWorkAreaJPanel(container, civilianUserAccount, cd, system);
+                container.add("VeteranWorkAreaJPanel", panel);
+                CardLayout layout = (CardLayout) container.getLayout();
+                layout.next(container);
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid credentials");
+                return;
+            }
         }
         else{
             CardLayout layout=(CardLayout)container.getLayout();
