@@ -20,7 +20,7 @@ import userinterface.CivilianRole.CivilianWorkAreaJPanel;
 public class CivilianRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CivilianWorkAreaJPanel(userProcessContainer, account, (CivilianOrganization)organization, enterprise);
+        return new CivilianWorkAreaJPanel(userProcessContainer, account, (CivilianOrganization)organization, enterprise, business);
     }
     
 }

@@ -8,6 +8,7 @@ package userinterface.CivilianRole;
 import Business.Civilian.CivilianDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.CivilianOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -21,29 +22,28 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount account;
-    private Organization organization;
+    private CivilianOrganization organization;
     private Enterprise enterprise;
     private CivilianDirectory cd;
     private EcoSystem system;
     /**
      * Creates new form CivilianWorkAreaJPanel
      */
-    public CivilianWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise) {
-        this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.organization = organization;
-        this.enterprise = enterprise;
-        initComponents();
-    }
+//    public CivilianWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise) {
+//        this.userProcessContainer = userProcessContainer;
+//        this.account = account;
+//        this.organization = organization;
+//        this.enterprise = enterprise;
+//        initComponents();
+//    }
     
-     public CivilianWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, CivilianDirectory cd, EcoSystem system) {
+     public CivilianWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, CivilianOrganization organization, Enterprise enterprise, EcoSystem system) {
 
-        initComponents();
         this.userProcessContainer = userProcessContainer;
         this.cd = cd;
         this.account = userAccount;
         this.system = system;
-
+        initComponents();
 //        system = dB4OUtil.retrieveSystem();
 //        populateRequestTable();
 //        populateTable();
@@ -62,6 +62,8 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        BtnCheckStatus = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("GET MEDICAL HELP:");
@@ -75,6 +77,16 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton2.setText("Regular Checkup");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("CHECK STATUS:");
+
+        BtnCheckStatus.setText("Check Status");
+        BtnCheckStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCheckStatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,12 +95,16 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BtnCheckStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(472, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,21 +116,34 @@ public class CivilianWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(61, 61, 61)
                 .addComponent(jButton2)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(jLabel2)
+                .addGap(48, 48, 48)
+                .addComponent(BtnCheckStatus)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("SymptomsJPanel", new SymptomsJPanel(userProcessContainer, account, organization, enterprise));
+        userProcessContainer.add("SymptomsJPanel", new SymptomsJPanel(userProcessContainer, account, organization, enterprise, system));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BtnCheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCheckStatusActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("CheckStatusJPanel", new CheckStatusJPanel(userProcessContainer, account, organization, enterprise, system));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_BtnCheckStatusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCheckStatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

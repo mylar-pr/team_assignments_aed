@@ -19,6 +19,9 @@ public class Civilian {
     private String symptom1;
     private String symptom2;
     private String symptom3;
+    private String symptom4;
+    private String symptom5;
+    private String comment;
 
     public String getFirstName() {
         return firstName;
@@ -90,6 +93,30 @@ public class Civilian {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSymptom4() {
+        return symptom4;
+    }
+
+    public void setSymptom4(String symptom4) {
+        this.symptom4 = symptom4;
+    }
+
+    public String getSymptom5() {
+        return symptom5;
+    }
+
+    public void setSymptom5(String symptom5) {
+        this.symptom5 = symptom5;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
     
     
