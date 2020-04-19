@@ -225,8 +225,8 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
         String age = txtAge.getText();
         String sex = (String) jComboBox1.getSelectedItem();
         
-//        Employee employee = system.getEmployeeDirectory().createEmployee(firstName);
-        UserAccount account = system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password);
+        Employee employee = system.getEmployeeDirectory().createEmployee(firstName);
+        UserAccount account = system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password, employee, new CivilianRole());
         Civilian c = system.getCd().createCustomer(firstName, lastName, age, sex, account);
         
         System.out.println("Registered Civilian succesfully");

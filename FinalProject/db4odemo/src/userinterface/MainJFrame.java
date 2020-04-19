@@ -185,19 +185,9 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         }
         
-        
         if(userAccount==null){
-            UserAccount civilianUserAccount =  system.getUserAccountDirectory().authenticateUser(userName, password);
-            if (civilianUserAccount != null) {
-                System.out.println("Civilian Login Succesful");
-                CivilianWorkAreaJPanel panel = new CivilianWorkAreaJPanel(container, civilianUserAccount, cd, system);
-                container.add("VeteranWorkAreaJPanel", panel);
-                CardLayout layout = (CardLayout) container.getLayout();
-                layout.next(container);
-            }else{
-                JOptionPane.showMessageDialog(null, "Invalid credentials");
-                return;
-            }
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            return;
         }
         else{
             CardLayout layout=(CardLayout)container.getLayout();
@@ -209,6 +199,22 @@ public class MainJFrame extends javax.swing.JFrame {
         logoutJButton.setEnabled(true);
         userNameJTextField.setEnabled(false);
         passwordField.setEnabled(false);
+        
+        
+//        if(userAccount==null){
+//            UserAccount civilianUserAccount =  system.getUserAccountDirectory().authenticateUser(userName, password);
+//            if (civilianUserAccount != null) {
+//                System.out.println("Civilian Login Succesful");
+//                CivilianWorkAreaJPanel panel = new CivilianWorkAreaJPanel(container, civilianUserAccount, cd, system);
+//                container.add("VeteranWorkAreaJPanel", panel);
+//                CardLayout layout = (CardLayout) container.getLayout();
+//                layout.next(container);
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Invalid credentials");
+//                return;
+//            }
+//        }
+        
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed

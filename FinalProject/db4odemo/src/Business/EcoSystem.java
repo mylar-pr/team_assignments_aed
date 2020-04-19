@@ -28,7 +28,7 @@ public class EcoSystem extends Organization{
      private EcoSystem(){
         super(null);
         networkList=new ArrayList<Network>();
-        cd = new CivilianDirectory();
+//        cd = new CivilianDirectory();
 
     }
     
