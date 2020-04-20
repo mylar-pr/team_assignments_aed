@@ -5,7 +5,7 @@
  */
 package Business.Organization;
 
-import Business.Role.ContactTracingAdminRole;
+import Business.Role.ContactTracerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class ContactTracingOrganization extends Organization {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new ContactTracingAdminRole());
+        roles.add(new ContactTracerRole());
         return roles;
     }
     

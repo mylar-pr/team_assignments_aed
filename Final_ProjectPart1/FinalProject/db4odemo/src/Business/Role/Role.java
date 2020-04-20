@@ -22,7 +22,8 @@ public abstract class Role {
         LabAssistant("Lab Assistant"),
         HospitalAdmin("Hospital Admin"),
         Pharmacist("Pharmacist"),
-        Civilian("Civilian");
+        Civilian("Civilian"),
+        ContactTracing("ContactTracing");
         
         private String value;
         private RoleType(String value){

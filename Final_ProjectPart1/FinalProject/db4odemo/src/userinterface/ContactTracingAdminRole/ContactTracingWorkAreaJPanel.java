@@ -22,7 +22,7 @@ import userinterface.PharmacistRole.ProcessWorkRequestJPanel;
  *
  * @author nitya
  */
-public class ContactTracingAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class ContactTracingWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ContactTracingAdminWorkAreaJPanel
@@ -31,15 +31,15 @@ public class ContactTracingAdminWorkAreaJPanel extends javax.swing.JPanel {
  private UserAccount userAccount;
  private EcoSystem system;
     private Enterprise enterprise;
-   private ContactTracingOrganization organization;
+   private ContactTracingOrganization contactTracingOrganization;
    
-    public ContactTracingAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount,ContactTracingOrganization organization,Enterprise enterprise, EcoSystem system) {
+    public ContactTracingWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount,ContactTracingOrganization organization,Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.system = system;
         this.enterprise = enterprise;
-        this.organization = (ContactTracingOrganization)organization;
+        this.contactTracingOrganization = (ContactTracingOrganization)organization;
         populateTable();
     } 
 
@@ -152,8 +152,9 @@ public class ContactTracingAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)Civilian_Details_Tbl.getModel();
         
        model.setRowCount(0);
-        
-        for(WorkRequest request : ContactTracingOrganization.getWorkQueue().getWorkRequestList())
+       
+//        System.out.println(ContactTracingOrganization);
+        for(WorkRequest request : contactTracingOrganization.getWorkQueue().getWorkRequestList())
                 {
             Object[] row = new Object[10];
             row[0]=request;
@@ -194,8 +195,8 @@ public class ContactTracingAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         request.setStatus("Processing");
 
-        ContactTracingWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        ContactTracingWorkRequestJPanel contactTracingWorkRequestJPanel = new ContactTracingWorkRequestJPanel(userProcessContainer, request);
+        userProcessContainer.add("ContactTracingWorkRequestJPanel", contactTracingWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed

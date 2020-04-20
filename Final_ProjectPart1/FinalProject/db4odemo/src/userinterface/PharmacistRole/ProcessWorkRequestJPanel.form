@@ -62,6 +62,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="resultJTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resultJTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backJButton">
       <Properties>
