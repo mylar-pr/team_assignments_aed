@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.HospitalOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.AssignWardWorkRequest;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.MedicineWorkRequest;
 //import Business.WorkQueue.LabTestWorkRequest; ADD PHARMACY WORK REQUEST
@@ -32,7 +33,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem system;
-
+    private AssignWardWorkRequest request;
     
     
     public HospitalAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, HospitalOrganization organization, Enterprise enterprise, EcoSystem system) {
@@ -42,6 +43,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.system = system;
+        this.request = request;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -76,6 +78,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         requestTestJButton = new javax.swing.JButton();
         refreshTestJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
+        BtnAssignIsolation = new javax.swing.JButton();
 
         valueLabel.setText("<value>");
 
@@ -124,6 +127,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
 
+        BtnAssignIsolation.setText("Assign Isolation Ward");
+        BtnAssignIsolation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAssignIsolationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,6 +155,10 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshTestJButton)
                 .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(BtnAssignIsolation)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +173,9 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(requestTestJButton)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addComponent(BtnAssignIsolation)
+                .addGap(206, 206, 206))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,8 +193,16 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
+    private void BtnAssignIsolationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAssignIsolationActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("AssignWardJPanel", new AssignWardJPanel(userProcessContainer, userAccount, enterprise, system, organization));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_BtnAssignIsolationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAssignIsolation;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshTestJButton;

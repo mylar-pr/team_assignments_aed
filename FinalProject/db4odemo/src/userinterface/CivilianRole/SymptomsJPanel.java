@@ -10,7 +10,10 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Civilian.Civilian;
+import Business.Network.Network;
 import Business.Organization.CivilianOrganization;
+import Business.Organization.DoctorOrganization;
+import Business.WorkQueue.IsolationWorkRequest;
 import javax.swing.JPanel;
 
 /**
@@ -132,24 +135,71 @@ public class SymptomsJPanel extends javax.swing.JPanel {
 
     private void BtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubmitActionPerformed
         // TODO add your handling code here:
-        String symptom1 = checkBoxS1.getText();
-        String symptom2 = checkBoxS2.getText();
-        String symptom3 = checkBoxS3.getText();
-        String symptom4 = checkBoxS4.getText();
-        String symptom5 = checkBoxS5.getText();
+        String symptom1;
+        String symptom2;
+        String symptom3;
+        String symptom4;
+        String symptom5;
+        String symptoms = "";
+        
+        if(checkBoxS1.isSelected()) {symptom1 = checkBoxS1.getText(); symptoms = symptoms + symptom1 + ",";} else {symptom1 = null;};
+        if(checkBoxS2.isSelected()) {symptom2 = checkBoxS2.getText(); symptoms = symptoms + symptom2 + ",";} else {symptom2 = null;};
+        if(checkBoxS3.isSelected()) {symptom3 = checkBoxS3.getText(); symptoms = symptoms + symptom3 + ",";} else {symptom3 = null;};
+        if(checkBoxS4.isSelected()) {symptom4 = checkBoxS4.getText(); symptoms = symptoms + symptom4 + ",";} else {symptom4 = null;};
+        if(checkBoxS5.isSelected()) {symptom5 = checkBoxS5.getText(); symptoms = symptoms + symptom5 + ",";} else {symptom5 = null;};
+        
+        
         
         String comments = txtComments.getText();
-        System.out.println("Printing from symptoms submit button");
-        for (Civilian c : system.getCd().getCivilianList()) {
-                if (c.getFirstName().equalsIgnoreCase(account.getEmployee().getName())) {
-                    c.setSymptom1(symptom1);
-                    c.setSymptom2(symptom2);
-                    c.setSymptom3(symptom3);
-                    c.setSymptom4(symptom4);
-                    c.setSymptom5(symptom5);
-                    c.setComment(comments);
+//        for (Civilian c : system.getCd().getCivilianList()) {
+//                if (c.getFirstName().equalsIgnoreCase(account.getEmployee().getName())) {
+//                    c.setSymptom1(symptom1);
+//                    c.setSymptom2(symptom2);
+//                    c.setSymptom3(symptom3);
+//                    c.setSymptom4(symptom4);
+//                    c.setSymptom5(symptom5);
+//                    c.setComment(comments);
+//                }
+//        }   
+        IsolationWorkRequest request = new IsolationWorkRequest();
+//        request.setMessage(concern);
+        request.setSender(account);
+        request.setStatus("Sent");
+        
+        request.setSymptom1(symptom1);
+        request.setSymptom2(symptom2);
+        request.setSymptom3(symptom3);
+        request.setSymptom4(symptom4);
+        request.setSymptom5(symptom5);
+        request.setSymptoms(symptoms);
+        request.setComment(comments);
+        
+        Organization org = null;
+
+        for (Network network : system.getNetworkList()) {
+            //Step 2.a: check against each enterprise
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                //                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+
+                //Step 3:check against each organization for each enterprise
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof DoctorOrganization) {
+                        org = organization;
+                        break;
+                    }
+
                 }
-        }        
+            }
+        }
+        if (org != null) {
+            org.getWorkQueue().getWorkRequestList().add(request);
+            System.out.println("Added Reqyesr to Org ");
+            account.getWorkQueue().getWorkRequestList().add(request);
+            System.out.println("Added Request to UserAccount ");
+            
+            
+            
+        }
     }//GEN-LAST:event_BtnSubmitActionPerformed
 
 

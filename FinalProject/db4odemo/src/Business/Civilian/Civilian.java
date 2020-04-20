@@ -22,6 +22,7 @@ public class Civilian {
     private String symptom4;
     private String symptom5;
     private String comment;
+    
 
     public String getFirstName() {
         return firstName;

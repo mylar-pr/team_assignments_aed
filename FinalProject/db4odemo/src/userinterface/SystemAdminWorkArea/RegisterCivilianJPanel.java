@@ -224,10 +224,11 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
         String lastName = txtLastName.getText();
         String age = txtAge.getText();
         String sex = (String) jComboBox1.getSelectedItem();
-        
+        String username = txtUserName.getText();
+
         Employee employee = system.getEmployeeDirectory().createEmployee(firstName);
         UserAccount account = system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password, employee, new CivilianRole());
-        Civilian c = system.getCd().createCustomer(firstName, lastName, age, sex, account);
+        Civilian c = system.getCd().createCivilian(firstName, lastName, age, sex, account, username);
         
         System.out.println("Registered Civilian succesfully");
         txtFirstName.setText("");
