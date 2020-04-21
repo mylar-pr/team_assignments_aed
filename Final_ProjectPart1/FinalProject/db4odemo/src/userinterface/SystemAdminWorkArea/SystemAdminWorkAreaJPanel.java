@@ -131,7 +131,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Selected Node:");
 
-        lblSelectedNode.setText("<View_selected_node>");
+        lblSelectedNode.setText("Manage");
 
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
