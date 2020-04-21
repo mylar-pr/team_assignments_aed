@@ -15,6 +15,7 @@ public class AssignWardWorkRequest extends WorkRequest {
    private String name;
    private String age;
    private String sex;
+   private String username;
 
     public String getAnalysis() {
         return Analysis;
@@ -54,6 +55,14 @@ public class AssignWardWorkRequest extends WorkRequest {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     

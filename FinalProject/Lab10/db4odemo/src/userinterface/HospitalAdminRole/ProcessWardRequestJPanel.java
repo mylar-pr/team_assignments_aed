@@ -40,9 +40,9 @@ public class ProcessWardRequestJPanel extends javax.swing.JPanel {
         String civilianAge = "";
         String civilianSex = "";
         for (Civilian c : system.getCd().getCivilianList()) {
-            System.out.println("Printing from process ward req loop");
-            System.out.println(c.getFirstName()+ " "+ c.getLastName());
-            System.out.println(request.getName());
+//            System.out.println("Printing from process ward req loop");
+//            System.out.println(c.getFirstName()+ " "+ c.getLastName());
+//            System.out.println(request.getName());
             if ((c.getFirstName()+ " "+ c.getLastName()).equals(request.getName())) {
                 civilianName = c.getFirstName()+ " "+ c.getLastName();
                 civilianAge = c.getAge();
@@ -52,7 +52,7 @@ public class ProcessWardRequestJPanel extends javax.swing.JPanel {
 
             }
         }
-        
+
         lblName.setText(civilianName);
         lblAge.setText(civilianAge);
         lblSex.setText(civilianSex);

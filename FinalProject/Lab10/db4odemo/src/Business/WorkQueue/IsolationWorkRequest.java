@@ -17,6 +17,7 @@ public class IsolationWorkRequest extends WorkRequest {
     private String Symptom5;
     private String Symptoms;
     private String comment;
+    private String username;
     
 
     public String getSymptom1() {
@@ -73,6 +74,14 @@ public class IsolationWorkRequest extends WorkRequest {
 
     public void setSymptoms(String Symptoms) {
         this.Symptoms = Symptoms;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     

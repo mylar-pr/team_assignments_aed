@@ -173,7 +173,7 @@ public class SymptomsJPanel extends javax.swing.JPanel {
         request.setSymptom5(symptom5);
         request.setSymptoms(symptoms);
         request.setComment(comments);
-        
+        request.setUsername(account.getUsername());
         Organization org = null;
 
         for (Network network : system.getNetworkList()) {

@@ -7,12 +7,17 @@ package userinterface.CivilianRole;
 import userinterface.DoctorRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.CivilianOrganization;
 import Business.Organization.DoctorOrganization;
+import Business.Organization.LabOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.IsolationWorkRequest;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,36 +31,88 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
     private DoctorOrganization docOrganization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem system;
+    private Organization org;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
     public CheckStatusJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.docOrganization = (DoctorOrganization)organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.system = ecosystem;
 //        valueLabel.setText(enterprise.getName());
         populateRequestTable();
+        testResult();
     }
+    
     
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         
         model.setRowCount(0);
-        for (WorkRequest request : docOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
+//        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()) {
+////            System.out.println("printing from loop");
+////            System.out.println(request.getClass());
+//            for (WorkRequest r : userAccount.getWorkQueue().getWorkRequestList()) {
+//            System.out.println("printing loop from check status");
+//            System.out.println(r);}
+//
+//            if (request instanceof IsolationWorkRequest) {
+//                Object[] row = new Object[4];
+//                row[0] = "VocationalTraining";
+//                row[1] = request.getReceiver();
+//                row[2] = request.getStatus();
+//
+//                row[3] = request.getRequestDate();
+//
+//                model.addRow(row);
+//            }
+//
+//    }
+         org = null;
+
+        for (Network network : system.getNetworkList()) {
+            //Step 2.a: check against each enterprise
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                //                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+
+                //Step 3:check against each organization for each enterprise
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof LabOrganization) {
+                        org = organization;
+                        break;
+                    }
+
+                }
+            }
+        }
+        if (org != null) {
+            for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
             
-            model.addRow(row);
+            if (request instanceof LabTestWorkRequest) {
+                
+                if(((LabTestWorkRequest) request).getUsername().equalsIgnoreCase(userAccount.getUsername())){
+                     
+                    Object[] row = new Object[5];
+                    row[0] = "Training";
+                    row[1] = ((LabTestWorkRequest) request).getReceiver();
+                    row[2] = ((LabTestWorkRequest) request).getStatus();
+
+                    row[3] = ((LabTestWorkRequest) request).getRequestDate();
+                    row[4] = ((LabTestWorkRequest) request).getTestUpdate();
+                    model.addRow(row);
+            }
         }
     }
-
+  
+            
+        }
+  
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,20 +130,20 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Receiver", "Status", "Result", "Testing"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -127,14 +184,14 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(requestTestJButton)
                         .addGap(86, 86, 86))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(refreshTestJButton)
-                        .addGap(103, 103, 103))))
+                        .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,12 +208,61 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
-        layout.next(userProcessContainer);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
+//        layout.next(userProcessContainer);
+        int selectedRow = workRequestJTable.getSelectedRow();
+        int count = workRequestJTable.getSelectedRowCount();
+        if(count == 1){
+            if (selectedRow >= 0) {
+            int selectionButton = JOptionPane.YES_NO_OPTION;
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Do you want to take the test?", "Warning", selectionButton);
+            if (selectionResult == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "Please check back for result");
+                for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+            
+            if (request instanceof LabTestWorkRequest) {
+                
+                if(((LabTestWorkRequest) request).getUsername().equalsIgnoreCase(userAccount.getUsername())){
+   
+                    ((LabTestWorkRequest) request).setTestRequest("Yes");
+            }
+        }
+    }
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Stay safe! Please self isolate yourself.");
+            }
+        } 
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+        }
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
-
+    
+    public void testResult(){
+        String result = "";
+        for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+            
+            if (request instanceof LabTestWorkRequest) {
+                
+                if(((LabTestWorkRequest) request).getUsername().equalsIgnoreCase(userAccount.getUsername())){
+   
+                    result = ((LabTestWorkRequest) request).getTestResult();
+            }
+        }
+    }
+    
+        if(result.equalsIgnoreCase("N")){
+        
+            JOptionPane.showMessageDialog(null, "You have been tested negative, Stay safe!");
+            
+        }
+    }
+    
+    
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
 
         populateRequestTable();

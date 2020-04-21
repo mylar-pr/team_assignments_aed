@@ -4,9 +4,19 @@
  */
 package userinterface.LabAssistantRole;
 
+import Business.Civilian.Civilian;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.HospitalOrganization;
+import Business.Organization.LabOrganization;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.AssignWardWorkRequest;
 import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,13 +29,43 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     LabTestWorkRequest request;
+    private EcoSystem system;
+    private UserAccount account;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, LabTestWorkRequest request) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecosystem, Organization organization, LabTestWorkRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
+        this.system = ecosystem;
+        this.account = account;
+        
+         String civilianName = "";
+        String civilianAge = "";
+        String civilianSex = "";
+        for (Civilian c : system.getCd().getCivilianList()) {
+            System.out.println("Printing from process ward req loop");
+            System.out.println(c.getFirstName()+ " "+ c.getLastName());
+            System.out.println(request.getName());
+            if ((c.getFirstName()+ " "+ c.getLastName()).equals(request.getName())) {
+                civilianName = c.getFirstName()+ " "+ c.getLastName();
+                civilianAge = c.getAge();
+                civilianSex = c.getSex();
+                
+                break;
+
+            }
+        }
+        
+        lblName.setText(civilianName);
+        lblAge.setText(civilianAge);
+        lblSex.setText(civilianSex);
+        
+        lblAnalysis.setText(((LabTestWorkRequest)request).getAnalysis());
+        lblComments.setText(((LabTestWorkRequest)request).getComments());
+        
+        updateLabel();
     }
 
     /**
@@ -39,8 +79,20 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
         submitJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        resultJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblComments = new javax.swing.JLabel();
+        lblAnalysis = new javax.swing.JLabel();
+        lblSex = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        BtnRequest = new javax.swing.JButton();
+        lblRequest = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         submitJButton.setText("Submit Result");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +101,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Result");
+        jLabel1.setText("Result:");
 
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,37 +110,122 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Doctor's Analysis:");
+
+        lblComments.setText("jLabel11");
+
+        lblAnalysis.setText("jLabel10");
+
+        lblSex.setText("jLabel9");
+
+        lblAge.setText("jLabel8");
+
+        lblName.setText("jLabel7");
+
+        jLabel6.setText("Sex:");
+
+        jLabel5.setText("Age:");
+
+        jLabel4.setText("Patient Name:");
+
+        jLabel3.setText("Doctor's comments:");
+
+        BtnRequest.setText("Request Test Samples");
+        BtnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRequestActionPerformed(evt);
+            }
+        });
+
+        lblRequest.setText("jLabel7");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Positive", "Negative" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backJButton)
-                    .addComponent(jLabel1))
+                .addContainerGap()
+                .addComponent(backJButton)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(BtnRequest)
+                .addGap(18, 18, 18)
+                .addComponent(lblRequest)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblComments))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addComponent(submitJButton)
-                        .addGap(63, 63, 63))))
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAnalysis))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSex))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAge))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(18, 18, 18)
+                            .addComponent(lblName))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitJButton))
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitJButton)
-                    .addComponent(backJButton))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(backJButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(submitJButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(lblName))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lblAge))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(lblSex))
+                        .addGap(118, 118, 118)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnRequest)
+                            .addComponent(lblRequest))
+                        .addGap(151, 151, 151)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(lblAnalysis))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lblComments))))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -105,14 +242,108 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        request.setTestResult(resultJTextField.getText());
-        request.setStatus("Completed");
+//        request.setTestResult(resultJTextField.getText());
+//        request.setStatus("Completed");
+        String result = (String)jComboBox1.getSelectedItem();
+        if (result.equalsIgnoreCase("negative")){
+            
+            ((LabTestWorkRequest)request).setTestResult("N");
+            
+        }
+        else{
+        
+        String civilianName = "";
+        String civilianAge = "";
+        String civilianSex = "";
+        
+        for (Civilian c : system.getCd().getCivilianList()) {
+            System.out.println("printing username");
+            if (c.getUsername().equals(request.getSender().getUsername())) {
+                civilianName = c.getFirstName()+ " "+ c.getLastName();
+                civilianAge = c.getAge();
+                civilianSex = c.getSex();
+                
+                break;
+
+            }
+        }
+        
+        AssignWardWorkRequest request = new AssignWardWorkRequest();
+        
+        
+        request.setStatus("Sent");
+//        request.setMessage(lblMainConcern.getText());
+        request.setSender(account);
+        System.out.println("Printing from process work req");
+        System.out.println(civilianName);
+        request.setName(civilianName);
+        ///////////////////////////////////////////////
+        
+        
+//        request.setUsername(account.getUsername());
+         Organization org = null;
+
+        for (Network network : system.getNetworkList()) {
+            //Step 2.a: check against each enterprise
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                //                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+
+                //Step 3:check against each organization for each enterprise
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof HospitalOrganization) {
+                        org = organization;
+                        break;
+                    }
+
+                }
+            }
+        }
+        if (org != null) {
+            org.getWorkQueue().getWorkRequestList().add(request);
+            account.getWorkQueue().getWorkRequestList().add(request);
+            System.out.println("Added labtest Request to UserAccount ");  
+            
+        }
+            
+        }
     }//GEN-LAST:event_submitJButtonActionPerformed
+    
+    public void updateLabel(){
+        if(((LabTestWorkRequest)request).getTestRequest().equalsIgnoreCase("No")){
+            lblRequest.setText("");
+        }
+        else{
+                lblRequest.setText("Request approved, proceed to test.");
+        }
+    
+    
+    }
+    
+    
+    
+    private void BtnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRequestActionPerformed
+        // TODO add your handling code here:
+        ((LabTestWorkRequest)request).setTestUpdate("New Info Available");
+        lblRequest.setText("Request Sent");
+        
+    }//GEN-LAST:event_BtnRequestActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRequest;
     private javax.swing.JButton backJButton;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField resultJTextField;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblAnalysis;
+    private javax.swing.JLabel lblComments;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblRequest;
+    private javax.swing.JLabel lblSex;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
 }

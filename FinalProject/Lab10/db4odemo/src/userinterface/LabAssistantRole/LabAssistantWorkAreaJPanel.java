@@ -5,6 +5,7 @@
 package userinterface.LabAssistantRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -21,21 +22,22 @@ import javax.swing.table.DefaultTableModel;
 public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private EcoSystem business;
-    private UserAccount userAccount;
+    private EcoSystem system;
+    private UserAccount account;
     private LabOrganization labOrganization;
+    private Enterprise enterprise;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public LabAssistantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public LabAssistantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, Organization organization) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = account;
-        this.business = business;
+        this.account = account;
+        this.system = system;
         this.labOrganization = (LabOrganization)organization;
-        
+        this.enterprise = enterprise;
         populateTable();
     }
     
@@ -142,7 +144,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
+        request.setReceiver(account);
         request.setStatus("Pending");
         populateTable();
         
@@ -160,7 +162,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
      
         request.setStatus("Processing");
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
+        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, account, enterprise, system, labOrganization, request);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

@@ -12,10 +12,13 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.HospitalOrganization;
+import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.AssignWardWorkRequest;
 import Business.WorkQueue.IsolationWorkRequest;
+import Business.WorkQueue.LabTestWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -28,6 +31,7 @@ public class ProcessIsolationRequestJPanel extends javax.swing.JPanel {
     private IsolationWorkRequest request;
     private EcoSystem system;
     private UserAccount account;
+    private String username;
     /**
      * Creates new form ProcessIsolationRequestJPanel
      */
@@ -66,6 +70,8 @@ public class ProcessIsolationRequestJPanel extends javax.swing.JPanel {
         lblAge.setText(civilianAge);
         lblComments.setText(comments);
         lblSex.setText(civilianSex);
+        
+        this.username = ((IsolationWorkRequest)request).getUsername();
         
     }
 
@@ -272,7 +278,7 @@ public class ProcessIsolationRequestJPanel extends javax.swing.JPanel {
             }
         }
         
-        AssignWardWorkRequest request = new AssignWardWorkRequest();
+        LabTestWorkRequest request = new LabTestWorkRequest();
         
         request.setAnalysis(txtArea_analysis.getText());
         if(txtArea_analysis.getText().equals("")){
@@ -290,6 +296,7 @@ public class ProcessIsolationRequestJPanel extends javax.swing.JPanel {
              return;
          }
         
+        request.setUsername(username);
          Organization org = null;
 
         for (Network network : system.getNetworkList()) {
@@ -299,7 +306,7 @@ public class ProcessIsolationRequestJPanel extends javax.swing.JPanel {
 
                 //Step 3:check against each organization for each enterprise
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    if (organization instanceof HospitalOrganization) {
+                    if (organization instanceof LabOrganization) {
                         org = organization;
                         break;
                     }
@@ -309,14 +316,11 @@ public class ProcessIsolationRequestJPanel extends javax.swing.JPanel {
         }
         if (org != null) {
             org.getWorkQueue().getWorkRequestList().add(request);
-            System.out.println("Added Request to Org ");
             account.getWorkQueue().getWorkRequestList().add(request);
-            System.out.println("Added Request to UserAccount ");
-            
-            
+            System.out.println("Added labtest Request to UserAccount ");  
             
         }
-        
+  
     }//GEN-LAST:event_BtnHospitalActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
