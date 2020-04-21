@@ -43,12 +43,6 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Result");
 
-        resultJTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultJTextFieldActionPerformed(evt);
-            }
-        });
-
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,10 +107,6 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         request.setTestResult(resultJTextField.getText());
         request.setStatus("Completed");
     }//GEN-LAST:event_submitJButtonActionPerformed
-
-    private void resultJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultJTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resultJTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

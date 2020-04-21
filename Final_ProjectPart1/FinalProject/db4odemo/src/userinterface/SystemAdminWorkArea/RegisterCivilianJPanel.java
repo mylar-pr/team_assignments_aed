@@ -64,22 +64,6 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
         txtUserName = new javax.swing.JTextField();
         BtnRegister = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtFirstName1 = new javax.swing.JTextField();
-        txtLastName1 = new javax.swing.JTextField();
-        txtAge1 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        txtUserName1 = new javax.swing.JTextField();
-        BtnRegister1 = new javax.swing.JButton();
-        jPasswordField2 = new javax.swing.JPasswordField();
         ContactNo = new javax.swing.JLabel();
         txtContactNO = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -115,36 +99,6 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setText("Register a Civilian");
-
-        jLabel10.setText("First Name:");
-
-        jLabel11.setText("Last Name:");
-
-        jLabel12.setText("Age:");
-
-        jLabel13.setText("Sex:");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female", "Prefer not to Answer" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jLabel14.setText("Enter Credentials");
-
-        jLabel15.setText("User Name:");
-
-        jLabel16.setText("Password:");
-
-        BtnRegister1.setText("Register");
-        BtnRegister1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegister1ActionPerformed(evt);
-            }
-        });
-
         ContactNo.setText("Contact No:");
 
         txtContactNO.addActionListener(new java.awt.event.ActionListener() {
@@ -155,101 +109,6 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
 
         jLabel18.setText("Address:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtFirstName1))
-                                .addComponent(jLabel9)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel12))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtLastName1)
-                                        .addComponent(txtAge1)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel13)
-                                    .addGap(57, 57, 57)
-                                    .addComponent(jComboBox2, 0, 231, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(86, 86, 86)
-                                    .addComponent(jPasswordField2))
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(BtnRegister1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(ContactNo)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtContactNO))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel18)
-                        .addGap(26, 26, 26)
-                        .addComponent(txtaddress)))
-                .addContainerGap(411, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel9)
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
-                    .addComponent(txtAge1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ContactNo)
-                    .addComponent(txtContactNO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(jLabel14)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(BtnRegister1)
-                .addGap(61, 61, 61))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,47 +116,59 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(225, 225, 225)
+                        .addComponent(BtnRegister))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtFirstName))
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtLastName)
+                                            .addComponent(txtAge)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(jComboBox1, 0, 231, Short.MAX_VALUE))))
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFirstName))
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLastName)
-                                    .addComponent(txtAge)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(57, 57, 57)
-                                .addComponent(jComboBox1, 0, 231, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtUserName)
-                                    .addComponent(jPasswordField1)))))
+                                .addGap(56, 56, 56)
+                                .addComponent(ContactNo)
+                                .addGap(35, 35, 35)
+                                .addComponent(txtContactNO, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(349, 349, 349))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(34, 34, 34)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(BtnRegister)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtaddress)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -315,19 +186,27 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(jLabel6)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(ContactNo)
+                    .addComponent(txtContactNO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(42, 42, 42)
                 .addComponent(BtnRegister)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(69, 69, 69))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -339,6 +218,14 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         char[] passwordCharArray = jPasswordField1.getPassword();
         String password = String.valueOf(passwordCharArray);
+          String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String age = txtAge.getText();
+        String sex = (String) jComboBox1.getSelectedItem();
+        String username = txtUserName.getText();
+        String contactNo=txtContactNO.getText();
+        String address=txtaddress.getText();
+        
         if (txtFirstName.getText().equals("")) {
             JOptionPane.showMessageDialog(null, " First Name can't be empty");
             return;
@@ -351,18 +238,24 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, " User Name can't be empty");
             return;
         }
-         if (txtaddress.getText().equals("")) {
+         
+            if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+            JOptionPane.showMessageDialog(null, "Username already exists!");
+    return;
+            }
+        if (password.equals("")) {
+            JOptionPane.showMessageDialog(null, " Password can't be empty");
+            return;
+        }
+        if (txtaddress.getText().equals("")) {
             JOptionPane.showMessageDialog(null, " Address can't be empty");
             return;
         }
           if (txtContactNO.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Contact Number can't be empty");
-            return;
-        }
-        if (password.equals("")) {
-            JOptionPane.showMessageDialog(null, " Password can't be empty");
-            return;
-        }
+            return;}
+          
+          
         try {
             if (!txtAge.getText().equals("")) {
                 Integer.parseInt(txtAge.getText());
@@ -372,7 +265,7 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
             return;
         }
         
-        
+       
 
 //        Civilian c = system.getCd().addCivilian();
 //        system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password);
@@ -387,16 +280,11 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
         
         
         
-        String firstName = txtFirstName.getText();
-        String lastName = txtLastName.getText();
-        String age = txtAge.getText();
-        String contactNo=txtContactNO.getText();
-        String address=txtaddress.getText();
-        String sex = (String) jComboBox1.getSelectedItem();
-        
+      
+
         Employee employee = system.getEmployeeDirectory().createEmployee(firstName);
         UserAccount account = system.getUserAccountDirectory().createUserAccount(txtUserName.getText(), password, employee, new CivilianRole());
-        Civilian c = system.getCd().createCustomer(firstName, lastName, age, sex,contactNo, address, account);
+        Civilian c = system.getCd().createCivilian(firstName, lastName, age, sex, account, username);
         
         System.out.println("Registered Civilian succesfully");
         txtFirstName.setText("");
@@ -409,14 +297,6 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtnRegisterActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void BtnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegister1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRegister1ActionPerformed
-
     private void txtContactNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactNOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactNOActionPerformed
@@ -424,18 +304,9 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegister;
-    private javax.swing.JButton BtnRegister1;
     private javax.swing.JLabel ContactNo;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -444,19 +315,12 @@ public class RegisterCivilianJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtAge1;
     private javax.swing.JTextField txtContactNO;
     private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtFirstName1;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtLastName1;
     private javax.swing.JTextField txtUserName;
-    private javax.swing.JTextField txtUserName1;
     private javax.swing.JTextField txtaddress;
     // End of variables declaration//GEN-END:variables
 }

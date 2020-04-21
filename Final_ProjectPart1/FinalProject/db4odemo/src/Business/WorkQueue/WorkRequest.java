@@ -19,7 +19,7 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
-    private String firstName;
+     private String firstName;
     private String LastName;
     private String sex;
     private String address;

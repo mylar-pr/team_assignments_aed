@@ -41,12 +41,10 @@ public class OrganizationDirectory {
             organization = new PharmacyOrganization();
             organizationList.add(organization);
         }
-        
-          else if (type.getValue().equals(Type.ContactTracing.getValue())){
+            else if (type.getValue().equals(Type.ContactTracing.getValue())){
             organization = new ContactTracingOrganization();
             organizationList.add(organization);
         }
-        
         return organization;
     }
 }

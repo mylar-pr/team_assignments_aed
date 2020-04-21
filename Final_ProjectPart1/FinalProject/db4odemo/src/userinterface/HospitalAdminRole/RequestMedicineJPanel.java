@@ -161,7 +161,7 @@ public class RequestMedicineJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        RequestTestWorkAreaJPanel dwjp = (RequestTestWorkAreaJPanel) component;
+        HospitalAdminWorkAreaJPanel dwjp = (HospitalAdminWorkAreaJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

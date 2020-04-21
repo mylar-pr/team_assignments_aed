@@ -8,6 +8,7 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.CivilianOrganization;
+import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ import userinterface.CivilianRole.CivilianWorkAreaJPanel;
 public class CivilianRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CivilianWorkAreaJPanel(userProcessContainer, account, (CivilianOrganization)organization, enterprise);
+        return new CivilianWorkAreaJPanel(userProcessContainer, account, (DoctorOrganization)organization, enterprise, business);
     }
     
 }

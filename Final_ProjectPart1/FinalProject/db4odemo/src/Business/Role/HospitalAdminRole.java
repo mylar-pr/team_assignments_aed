@@ -21,10 +21,8 @@ import userinterface.HospitalAdminRole.HospitalAdminWorkAreaJPanel;
 public class HospitalAdminRole extends Role{
     
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount userAccount, Organization organization,Enterprise enterprise,EcoSystem system ) {
-        return new HospitalAdminWorkAreaJPanel(userProcessContainer, userAccount, (HospitalOrganization)organization, enterprise,system);
-        
-      
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+        return new HospitalAdminWorkAreaJPanel(userProcessContainer, account, (HospitalOrganization)organization, enterprise, business);
     }
     
 }

@@ -19,6 +19,7 @@ import Business.Civilian.CivilianDirectory;
 import Business.Network.Network;
 import Business.Organization.ContactTracingOrganization;
 import Business.Organization.Organization;
+import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.HashSet;
 import javax.swing.table.DefaultTableModel;
@@ -66,15 +67,15 @@ public class RequestContactTracingJPanel extends javax.swing.JPanel {
             row[0]=request;
             row[1] = c.getFirstName();
             row[2] = c.getLastName();
-            row[3] = c.getaddress();
+            row[3] = c.getAddress();
             row[4] = c.getAge();
             row[5] = c.getSex();
-            row[6] = c.getcontactNo();
+            row[6] = c.getContactNo();
             row[7]=request.getMessage();
             row[8]=request.getSender().getEmployee().getName();
             row[9]=request.getReceiver() ;
             row[10]=request.getStatus();
-            String result = ((MedicineWorkRequest) request).getTestResult(); 
+            String result = ((LabTestWorkRequest) request).getTestResult(); 
             row[11] = result == null ? "Positive" : result;
             
               model.addRow(row);

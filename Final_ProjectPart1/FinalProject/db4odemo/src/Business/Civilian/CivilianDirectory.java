@@ -32,14 +32,13 @@ public class CivilianDirectory {
         return cd;
     }
     
-    public Civilian createCustomer(String firstName, String lastName, String age, String sex,String contactNo,String address, UserAccount userAccount){
+    public Civilian createCivilian(String firstName, String lastName, String age, String sex, UserAccount userAccount, String username){
         Civilian c = new Civilian();
         c.setFirstName(firstName);
         c.setLastName(lastName);
         c.setAge(age);
         c.setSex(sex);
-        c.setcontactNo(contactNo);
-        c.setaddress(address);
+        c.setUsername(username);
 //        c.setUserAccount(userAccount);
         civilianDirectory.add(c);  
         return c;
